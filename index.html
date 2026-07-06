@@ -619,6 +619,138 @@
   .toast.info { border-color: #1e3a8a; }
   @keyframes toastIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 
+
+  /* ---------- Taste Game ---------- */
+  .taste-q {
+    background: #161616;
+    border: 1px solid #262626;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 10px;
+  }
+  .taste-q .tq-cat {
+    font-size: 10px;
+    color: #737373;
+    margin-bottom: 4px;
+  }
+  .taste-q .tq-text {
+    font-size: 14px;
+    color: #e5e5e5;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .taste-q .tq-opts { display: flex; flex-direction: column; gap: 6px; }
+  .tq-opt {
+    text-align: right;
+    font-size: 12px;
+    padding: 9px 11px;
+    border: 1px solid #2a2a2a;
+    background: #1a1a1a;
+    color: #d4d4d4;
+    border-radius: 6px;
+    transition: all 0.15s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    width: 100%;
+    font-family: inherit;
+  }
+  .tq-opt:hover { border-color: #404040; background: #1f1f1f; }
+  .tq-opt.selected { background: #e5e5e5; color: #0a0a0a; border-color: #e5e5e5; font-weight: 500; }
+  .tq-opt .tq-check { font-size: 12px; opacity: 0; }
+  .tq-opt.selected .tq-check { opacity: 1; }
+  .taste-reveal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .taste-reveal-card {
+    padding: 10px;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    background: #1a1a1a;
+  }
+  .taste-reveal-card .tr-who {
+    font-size: 10px;
+    color: #737373;
+    margin-bottom: 4px;
+  }
+  .taste-reveal-card .tr-what {
+    font-size: 12px;
+    color: #e5e5e5;
+    line-height: 1.5;
+  }
+  .taste-reveal-card.match { border-color: #14532d; background: #0c1f0c; }
+  .taste-mini-chat {
+    border-top: 1px solid #1f1f1f;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+  .taste-mini-chat .tmc-label {
+    font-size: 11px;
+    color: #737373;
+    margin-bottom: 8px;
+  }
+  .taste-mini-chat .tmc-msgs {
+    max-height: 120px;
+    overflow-y: auto;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .tmc-msg {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    max-width: 85%;
+    word-wrap: break-word;
+  }
+  .tmc-msg.me { background: #1f1f1f; color: #e5e5e5; align-self: flex-start; }
+  .tmc-msg.them { background: #262626; color: #e5e5e5; align-self: flex-end; }
+  .tmc-msg .tmc-name { font-size: 10px; color: #737373; display: block; }
+  .tmc-composer {
+    display: flex;
+    gap: 6px;
+  }
+  .tmc-composer input {
+    flex: 1;
+    padding: 8px 10px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    color: #e5e5e5;
+    font-size: 12px;
+    outline: none;
+    font-family: inherit;
+  }
+  .tmc-composer input:focus { border-color: #525252; }
+  .tmc-composer button {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: #e5e5e5;
+    color: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+  }
+  .tmc-composer button:hover { background: #fff; }
+  .taste-counter {
+    text-align: center;
+    font-size: 11px;
+    color: #525252;
+    margin-bottom: 10px;
+  }
+
   .hidden { display: none !important; }
 
   /* ---------- Composer relative for emoji ---------- */
@@ -758,6 +890,64 @@ function pickRandomQuestions(n) {
 }
 
 
+
+
+// ============================================================================
+// TASTE QUESTIONS (50 questions)
+// ============================================================================
+const TASTE_QUESTIONS = [
+{id:1,category:"الطول والوزن والبنية",question:"ما هو الطول المثالي الذي تتمناه في شريك حياتك؟",options:["أطول مني بكثير","أقصر مني بكثير","قريباً جداً من طولي","غير مهم نهائياً"]},
+{id:2,category:"الطول والوزن والبنية",question:"كيف تفضل بنية وجسم شريك حياتك المستقبلي؟",options:["نحيف/ة ورشيق/ة","رياضي/ة وذو عضلات مفتولة","ممتلئ/ة قليلاً (كيرفي)","متناسق/ة","غير مهم نهائياً"]},
+{id:3,category:"الطول والوزن والبنية",question:"ما هو الوزن التقريبي الذي تفضله في الطرف الآخر؟",options:["أقل من المتوسط (نحافة)","متوسط ومتناسق مع طوله","لا يهم طالما هناك جاذبية","غير مهم نهائياً"]},
+{id:4,category:"الملامح والشعر والوجه",question:"ما هو لون البشرة الذي تجده الأكثر جاذبية لك؟",options:["بشرة بيضاء/فاتحة","بشرة حنطية/قمحية","بشرة سمراء/داكنة","لا يهم، المهم نضارة الوجه","غير مهم نهائياً"]},
+{id:5,category:"الملامح والشعر والوجه",question:"كيف تفضل شعر شريك حياتك (طوله وطبيعته)؟",options:["طويل وناعم","قصير وقصّة عصرية","كيرلي/مجعد بشكل جذاب","مظهر مرتب كيفما كان","غير مهم نهائياً"]},
+{id:6,category:"الملامح والشعر والوجه",question:"ما هو لون العيون الذي تفضله؟",options:["عيون ملونة (خضراء، زرقاء، عسلية)","عيون سوداء أو بنية داكنة","شكل العيون أهم من لونها","غير مهم نهائياً"]},
+{id:7,category:"الملامح والشعر والوجه",question:"ملامح الوجه بشكل عام، كيف تفضلها؟",options:["ملامح حادة وبارزة","ملامح طفولية وناعمة وهادئة","ملامح مألوفة ومريحة للنفس","غير مهم نهائياً"]},
+{id:8,category:"الملامح والشعر والوجه",question:"ما رأيك في وجود علامات جمال خاصة (كالغمازات، الشامات، النمش)؟",options:["أجدها جذابة جداً","أفضّل الوجه الخالي من العلامات","تعجبني إن كانت عفوية","غير مهم نهائياً"]},
+{id:9,category:"الأناقة والأسلوب الخارجي",question:"ما هو أسلوب اللباس (الستايل) الذي تفضله في شريكك؟",options:["كلاسيكي، رسمي، وأنيق دائماً","كاجوال، رياضي، وعملي","عصري جداً ويتابع الموضة","متوازن ومحتشم","غير مهم نهائياً"]},
+{id:10,category:"الأناقة والأسلوب الخارجي",question:"الاهتمام بالعطور والرائحة الشخصية بالنسبة لك:",options:["شرط أساسي وجوهري","يهمني النظافة العامة فقط","يهمني أن يختار عطوراً تتوافق مع ذوقي","غير مهم نهائياً"]},
+{id:11,category:"الأناقة والأسلوب الخارجي",question:"كيف تفضل اهتمام الشريك بمظهره الخارجي أمام الناس؟",options:["مبالغ فيه ويهتم بأدق التفاصيل","طبيعي وتلقائي دون تكلف","يهمني أن يواكب مستواي","غير مهم نهائياً"]},
+{id:12,category:"الأناقة والأسلوب الخارجي",question:"النظافة الشخصية الدقيقة (تقليم الأظافر، العناية بالبشرة، الأسنان):",options:["هوس بالنسبة لي","مقبولة وطبيعية","تهمني نظافة الأسنان والابتسامة","غير مهم نهائياً"]},
+{id:13,category:"اللياقة والصحة والسن",question:"ما هو مدى اهتمام شريكك بالرياضة واللياقة البدنية؟",options:["يذهب للجيم بانتظام ويومياً","يكفي أن يحافظ على صحته","يتشارك معي في نشاطي البدني","غير مهم نهائياً"]},
+{id:14,category:"اللياقة والصحة والسن",question:"الفارق في العمر والشكل الخارجي المرتبط به:",options:["أفضّل شريكاً يبدو أصغر مني","أفضّل شريكاً يبدو ناضجاً وأكبر","أفضّل شريكاً في مثل عمري","غير مهم نهائياً"]},
+{id:15,category:"اللياقة والصحة والسن",question:"الابتسامة وصحة الأسنان:",options:["يجب أن تكون هوليودية ومثالية","طبيعية جداً حتى لو غير منتظمة","ابتسامة دافئة ومريحة للنظر","غير مهم نهائياً"]},
+{id:16,category:"اللياقة والصحة والسن",question:"نبرة الصوت وصوت الشريك:",options:["أفضّل الصوت الهادئ والناعم جداً","أفضّل الصوت القوي والجهوري","نبرة صوت متزنة ومريحة","غير مهم نهائياً"]},
+{id:17,category:"اللياقة والصحة والسن",question:"لغة الجسد وطريقة المشي والحركة:",options:["حركات سريعة ونشيطة مفعمة بالحيوية","حركات رصينة وهادئة تعكس الرزانة","لغة جسد متوافقة مع أسلوبي","غير مهم نهائياً"]},
+{id:18,category:"تفاصيل جمالية إضافية",question:"طول اليدين والقدمين وشكلهما:",options:["أهتم جداً بنعومة وجمال اليدين والقدمين","أهتم بنظافتهما فقط","يفضل أن تكون متناسقة مع حجم جسمه","غير مهم نهائياً"]},
+{id:19,category:"تفاصيل جمالية إضافية",question:"وجود لحية/شارب أو مكياج/زينة:",options:["أفضّل وجود لحية كثيفة / مكياج خفيف","أفضّل الوجه حليقاً / مظهر طبيعي بدون مكياج","حسب ما يليق بوجهه/بوجهها","غير مهم نهائياً"]},
+{id:20,category:"تفاصيل جمالية إضافية",question:"طول الرقبة واستقامة الظهر (القوام):",options:["أفضّل القوام الممشوق جداً","القوام العادي والطبيعي","قوام يتناسب مع طولي","غير مهم نهائياً"]},
+{id:21,category:"تفاصيل جمالية إضافية",question:"لون وشكل الشعر الأبيض (الشيب المبكر في حال وجوده):",options:["أرفضه تماماً وأفضل صبغه","أراه علامة جاذبية ووقار","طالما لا يؤثر على روحه الشبابية","غير مهم نهائياً"]},
+{id:22,category:"تفاصيل جمالية إضافية",question:"طريقة الضحك وحركات الوجه العفوية:",options:["ضحكة هادئة وخجولة","ضحكة عالية ومرحة ومليئة بالطاقة","ضحكة تشعرني بالراحة والأمان","غير مهم نهائياً"]},
+{id:23,category:"تفاصيل جمالية إضافية",question:"شكل ولون الأظافر والاعتناء بها:",options:["مرتبة وطويلة ومطلية باحترافية","قصيرة ونظيفة فقط","تتماشى مع المظهر العام","غير مهم نهائياً"]},
+{id:24,category:"تفاصيل جمالية إضافية",question:"ارتداء النظارات الطبية أو العدسات:",options:["أجد النظارات جذابة وتوحي بالذكاء","أفضّل بدون نظارات (ليزك)","لا تؤثر على جاذبيته في نظري","غير مهم نهائياً"]},
+{id:25,category:"تفاصيل جمالية إضافية",question:"الهيئة العامة عند الاستيقاظ من النوم:",options:["يهمّني أن يظل محافظاً على شكل مقبول","أحب المظهر الطبيعي العفوي","أتقبله كما هو طالما الحب موجود","غير مهم نهائياً"]},
+{id:26,category:"المزاج والطباع النفسية",question:"كيف تفضل طبيعة مزاج شريك حياتك في الأوقات العادية؟",options:["هادئ/ة جداً وصامت/ة","حيوي/ة ومتحدث/ة بارع/ة","متوازن/ة حسب الموقف","غير مهم نهائياً"]},
+{id:27,category:"المزاج والطباع النفسية",question:"عند حدوث خلاف أو غضب، كيف تفضل رد فعله؟",options:["ينسحب مؤقتاً حتى يهدأ ثم يناقش","يعبر عن غضبه فوراً وينهي الأمر","يمتص غضبي بذكاء وعاطفة","غير مهم نهائياً"]},
+{id:28,category:"المزاج والطباع النفسية",question:"مدى مرونة شريك الحياة في التعامل مع التغييرات المفاجئة:",options:["مرن جداً ويتقبل الخطط البديلة","منظم جداً وينزعج من تغير الخطط","يتشاور معي لاتخاذ قرار مشترك","غير مهم نهائياً"]},
+{id:29,category:"المزاج والطباع النفسية",question:"حس الدعابة والمرح لدى الطرف الآخر:",options:["مرح جداً ويحب الضحك باستمرار","جاد ورصين ويضحك في الأوقات المناسبة","يفهم نكاتي ويشاركني نفس الكوميديا","غير مهم نهائياً"]},
+{id:30,category:"المزاج والطباع النفسية",question:"التعامل مع الحزن أو الفترات الصعبة:",options:["يفضل العزلة والتعامل بمفرده","يحتاج الفضفضة والدعم العاطفي المستمر","يوازن بين حاجته للمساحة ووجودي","غير مهم نهائياً"]},
+{id:31,category:"الأخلاق والقيم والمبادئ",question:"صفة الصدق والصراحة المطلقة:",options:["صراحة حادة وصادمة في كل شيء","صراحة مغلفة باللطف ومراعاة المشاعر","يصارحني بما يخص علاقتنا وبيتنا فقط","غير مهم نهائياً"]},
+{id:32,category:"الأخلاق والقيم والمبادئ",question:"الأمانة والوفاء بالعهود والوعود:",options:["خط أحمر، أدق الوعد يجب أن ينفذ","متفهم للأعذار طالما النية طيبة","يلتزم بوعوده الأساسية والكبرى","غير مهم نهائياً"]},
+{id:33,category:"الأخلاق والقيم والمبادئ",question:"صفة الكرم والإنفاق المالي:",options:["كريم جداً لدرجة الرفاهية","مدبر وحريص وينفق بحساب","متوازن في الإنفاق بما يتوافق مع إمكانياتنا","غير مهم نهائياً"]},
+{id:34,category:"الأخلاق والقيم والمبادئ",question:"التواضع في التعامل مع الناس:",options:["متواضع جداً ويتعامل بلطف شديد","يعتز بنفسه ولديه كبرياء عالٍ","يعامل الناس باحترام ويحفظ برستيجه","غير مهم نهائياً"]},
+{id:35,category:"الأخلاق والقيم والمبادئ",question:"الغيرة والعاطفة الحمائية:",options:["غيور جداً ويحب التملك كدليل على الحب","متحرر ويثق ثقة عمياء","غيرة معتدلة تشعرني بالحب ولا تقيد حريتي","غير مهم نهائياً"]},
+{id:36,category:"العلاقات الاجتماعية والذكاء العاطفي",question:"طبيعة العلاقات الاجتماعية للشريك:",options:["اجتماعي جداً لديه معارف كثر","بيوتي وانطوائي يكتفي بدائرة ضيقة","يوازن بين واجبه الاجتماعي ووقت بيتنا","غير مهم نهائياً"]},
+{id:37,category:"العلاقات الاجتماعية والذكاء العاطفي",question:"برّ الوالدين والعلاقة مع الأهل والأقارب:",options:["الأهل في المقام الأول دائماً","يضع حدوداً صارمة لأهله","يوازن بين بر أهله واحترام استقلالية بيتنا","غير مهم نهائياً"]},
+{id:38,category:"العلاقات الاجتماعية والذكاء العاطفي",question:"صفة التسامح والقدرة على الغفران:",options:["يسامح بسرعة ولا يحمل ضغينة","يصعب عليه النسيان ويناقش التفاصيل القديمة","يعاتب بهدوء ويغفر إذا وجد تقديراً","غير مهم نهائياً"]},
+{id:39,category:"العلاقات الاجتماعية والذكاء العاطفي",question:"الدعم والتشجيع لطموح الطرف الآخر:",options:["طموح جداً ويدفعني بقوة لتحقيق ذاتي","يفضل الاستقرار ويرى الأولوية للمنزل","يدعمني في طموحي بما لا يضر بأسرتنا","غير مهم نهائياً"]},
+{id:40,category:"العلاقات الاجتماعية والذكاء العاطفي",question:"صفة العناد والتمسك بالرأي:",options:["مرن جداً ويتنازل بسهولة","عنيد ويتمسك بموقفه","يناقش بالمنطق ويقبل الحلول الوسطى","غير مهم نهائياً"]},
+{id:41,category:"الحياة اليومية وأسلوب العيش",question:"النضج وتحمل المسؤولية في إدارة الأزمات:",options:["قيادي ويعتمد عليه بالكامل","يفضل المشاركة بالتساوي في كل قرار","يتحمل المسؤولية في الجوانب التي يتقنها","غير مهم نهائياً"]},
+{id:42,category:"الحياة اليومية وأسلوب العيش",question:"الرومانسية وإظهار مشاعر الحب بالكلمات والأفعال:",options:["رومانسي حالم يحب الهدايا والمفاجآت يومياً","واقعي وجاف لكن أفعاله تثبت حبه","يعبر عن حبه بطريقة دافئة ومتزنة","غير مهم نهائياً"]},
+{id:43,category:"الحياة اليومية وأسلوب العيش",question:"درجة التدين والالتزام الأخلاقي/الديني:",options:["ملتزم جداً بالفرائض والسنن","معتدل ويحب الدين بيسر وتسامح","متوافق مع درجتي في الالتزام","غير مهم نهائياً"]},
+{id:44,category:"الحياة اليومية وأسلوب العيش",question:"صفة الصبر وطول البال مع الشريك والأطفال:",options:["صبور جداً ولا يستفز بسهولة","حاسم وسريع وينفد صبره من التراخي","صبور في المواقف الصعبة وحازم في وقت الحزم","غير مهم نهائياً"]},
+{id:45,category:"الحياة اليومية وأسلوب العيش",question:"الأنانية مقابل الإيثار (حب الذات):",options:["يفضل مصلحة الشريك والبيت دائماً","يهتم بنفسه أولاً","يبحث عن المصلحة المشتركة بعدل","غير مهم نهائياً"]},
+{id:46,category:"الحياة اليومية وأسلوب العيش",question:"الذكاء وسرعة البديهة والقدرة العقلية:",options:["عبقري سريع الفهم ويحب النقاشات العميقة","بسيط التفكير ويركز على الأمور العملية","ذكي اجتماعياً وعاطفياً","غير مهم نهائياً"]},
+{id:47,category:"الحياة اليومية وأسلوب العيش",question:"صفة النقد والتعليق على تصرفات الشريك:",options:["يكثر من الملاحظات والنصائح","يتقبلني كما أنا دون أي نقد","يوجهني بلطف وسرية عندما أخطأ فقط","غير مهم نهائياً"]},
+{id:48,category:"الحياة اليومية وأسلوب العيش",question:"الشجاعة والقدرة على المواجهة والدفاع عن الشريك:",options:["جسور ولا يقبل أن يمسني أحد","مسالم ويفضل الدبلوماسية وتجنب المشاكل","يعرف متى يواجه بحكمة لحمايتي","غير مهم نهائياً"]},
+{id:49,category:"الحياة اليومية وأسلوب العيش",question:"النظام والترتيب داخل المنزل:",options:["مهووس بالنظام والترتيب والنظافة","فوضوي قليلاً ولا تفرق معه التفاصيل","يشاركني في تنظيم البيت بأسلوب متفق عليه","غير مهم نهائياً"]},
+{id:50,category:"الحياة اليومية وأسلوب العيش",question:"الرضا والقناعة مقابل الطموح المادي والاجتماعي:",options:["قنوع جداً ويرضى بالقليل","متطلع دائماً للأفضل ويبحث عن الثراء","يسعى لتطوير مستوانا المعيشي بعقلانية","غير مهم نهائياً"]}
+];
+
 // ============================================================================
 // STATE
 // ============================================================================
@@ -787,6 +977,18 @@ const state = {
   },
   typingTimer: null,
   partnerTypingTimer: null,
+  tasteGame: {
+    active: false,
+    phase: 'idle',
+    question: null,
+    myAnswer: -1,
+    partnerAnswer: -1,
+    iSubmitted: false,
+    partnerSubmitted: false,
+    chatMsgs: [],
+    askedIds: [],
+    questionNum: 0,
+  },
 };
 
 function getTopic() {
@@ -1049,6 +1251,71 @@ function handleData(d) {
       renderGame();
       toast('انتهت اللعبة', 'info');
       break;
+
+    // ---- Taste Game ----
+    case 'taste-invite':
+      showGameInvite(d.from, 'taste');
+      break;
+
+    case 'taste-accept':
+      toast(state.partnerUsername + ' قبل الدعوة!', 'success');
+      startTasteGameReal();
+      break;
+
+    case 'taste-decline':
+      toast(state.partnerUsername + ' رفض الدعوة', 'info');
+      break;
+
+    case 'taste-question':
+      state.tasteGame.active = true;
+      state.tasteGame.phase = 'answering';
+      state.tasteGame.question = d.question;
+      state.tasteGame.myAnswer = -1;
+      state.tasteGame.partnerAnswer = -1;
+      state.tasteGame.iSubmitted = false;
+      state.tasteGame.partnerSubmitted = false;
+      state.tasteGame.chatMsgs = [];
+      state.tasteGame.questionNum = d.questionNum || 1;
+      openTasteGame();
+      renderTasteGame();
+      break;
+
+    case 'taste-answer':
+      state.tasteGame.partnerAnswer = d.answer;
+      state.tasteGame.partnerSubmitted = true;
+      renderTasteGame();
+      break;
+
+    case 'taste-chat':
+      if (state.tasteGame.active) {
+        state.tasteGame.chatMsgs.push({
+          username: d.username,
+          content: d.content,
+          type: d.from === state.myUsername ? 'me' : 'them',
+          timestamp: d.timestamp,
+        });
+        renderTasteGame();
+      }
+      break;
+
+    case 'taste-next':
+      state.tasteGame.question = d.question;
+      state.tasteGame.myAnswer = -1;
+      state.tasteGame.partnerAnswer = -1;
+      state.tasteGame.iSubmitted = false;
+      state.tasteGame.partnerSubmitted = false;
+      state.tasteGame.chatMsgs = [];
+      state.tasteGame.phase = 'answering';
+      state.tasteGame.questionNum = d.questionNum || (state.tasteGame.questionNum + 1);
+      renderTasteGame();
+      break;
+
+    case 'taste-end':
+      state.tasteGame.active = false;
+      state.tasteGame.phase = 'idle';
+      closeTasteGame();
+      toast('انتهت لعبة الذوق', 'info');
+      break;
   }
 }
 // CHAT
@@ -1140,6 +1407,11 @@ function renderChat() {
             title: 'لعبة التوافق',
             onclick: function() { sendGameInvite(); },
           }, '🎮'),
+          h('button', {
+            class: 'icon-btn',
+            title: 'أسئلة الذوق',
+            onclick: function() { sendTasteInvite(); },
+          }, '❓'),
           h('button', {
             class: 'icon-btn',
             title: 'خروج',
@@ -1530,16 +1802,22 @@ function renderGame() {
 // ============================================================================
 // GAME INVITATION POPUP
 // ============================================================================
-function showGameInvite(fromUser) {
+function showGameInvite(fromUser, gameType) {
   var old = el('gameInvitePopup');
   if (old) old.remove();
+  var isTaste = gameType === 'taste';
+  var icon = isTaste ? '❓' : '🎮';
+  var title = isTaste ? 'أسئلة الذوق!' : 'دعوة للعب!';
+  var desc = isTaste
+    ? fromUser + ' يدعوك للعب أسئلة الذوق! سؤال واحد في كل مرة لتكتشفا ذوقكما.'
+    : fromUser + ' يدعوك للعب لعبة التوافق! هل أنت مستعد لاكتشاف مدى توافقكما؟';
   var popup = h('div', { class: 'invite-overlay', id: 'gameInvitePopup' },
     h('div', { class: 'invite-card' },
-      h('div', { class: 'invite-icon' }, '🎮'),
-      h('h3', {}, 'دعوة للعب!'),
-      h('p', {}, fromUser + ' يدعوك للعب لعبة التوافق! هل أنت مستعد لاكتشاف مدى توافقكما؟'),
+      h('div', { class: 'invite-icon' }, icon),
+      h('h3', {}, title),
+      h('p', {}, desc),
       h('div', { class: 'invite-btns' },
-        h('button', { class: 'accept-btn', onclick: acceptInvite }, 'قبول'),
+        h('button', { class: 'accept-btn', onclick: function() { acceptInvite(gameType); } }, 'قبول'),
         h('button', { class: 'decline-btn', onclick: declineInvite }, 'رفض'),
       ),
     )
@@ -1547,11 +1825,16 @@ function showGameInvite(fromUser) {
   document.body.appendChild(popup);
 }
 
-function acceptInvite() {
+function acceptInvite(gameType) {
   var popup = el('gameInvitePopup');
   if (popup) popup.remove();
-  sendData({ type: 'game-accept' });
-  toast('قبلت الدعوة! جارٍ فتح اللعبة', 'success');
+  if (gameType === 'taste') {
+    sendData({ type: 'taste-accept' });
+    toast('قبلت الدعوة!', 'success');
+  } else {
+    sendData({ type: 'game-accept' });
+    toast('قبلت الدعوة! جارٍ فتح اللعبة', 'success');
+  }
 }
 
 function declineInvite() {
@@ -1633,6 +1916,229 @@ function insertEmoji(em) {
   input.value = v.slice(0, s) + em + v.slice(e);
   input.focus();
   input.selectionStart = input.selectionEnd = s + em.length;
+}
+
+
+// ============================================================================
+// TASTE GAME
+// ============================================================================
+function sendTasteInvite() {
+  if (!state.connected) { toast('الطرف الآخر غير متصل', 'error'); return; }
+  sendData({ type: 'taste-invite' });
+  toast('تم إرسال دعوة أسئلة الذوق...', 'info');
+}
+
+function startTasteGameReal() {
+  var remaining = TASTE_QUESTIONS.filter(function(q) {
+    return state.tasteGame.askedIds.indexOf(q.id) === -1;
+  });
+  if (remaining.length === 0) {
+    state.tasteGame.askedIds = [];
+    remaining = TASTE_QUESTIONS.slice();
+  }
+  var q = remaining[Math.floor(Math.random() * remaining.length)];
+  state.tasteGame.askedIds.push(q.id);
+  state.tasteGame.active = true;
+  state.tasteGame.phase = 'answering';
+  state.tasteGame.question = q;
+  state.tasteGame.myAnswer = -1;
+  state.tasteGame.partnerAnswer = -1;
+  state.tasteGame.iSubmitted = false;
+  state.tasteGame.partnerSubmitted = false;
+  state.tasteGame.chatMsgs = [];
+  state.tasteGame.questionNum = (state.tasteGame.questionNum || 0) + 1;
+  openTasteGame();
+  sendData({ type: 'taste-question', question: q, questionNum: state.tasteGame.questionNum });
+  renderTasteGame();
+}
+
+function openTasteGame() {
+  if (!el('tasteModal')) {
+    document.body.appendChild(
+      h('div', { class: 'modal-overlay', id: 'tasteModal' },
+        h('div', { class: 'modal' },
+          h('div', { class: 'modal-header' },
+            h('div', {},
+              h('h2', {}, 'أسئلة الذوق'),
+              h('p', {}, 'اكتشفا ذوقكما سؤالاً بسؤال'),
+            ),
+            h('button', { class: 'icon-btn', onclick: function() { closeTasteGame(); } }, '✕'),
+          ),
+          h('div', { class: 'modal-body', id: 'tasteBody' }),
+          h('div', { class: 'modal-footer', id: 'tasteFooter' }),
+        )
+      )
+    );
+  }
+  el('tasteModal').classList.add('open');
+}
+
+function closeTasteGame() {
+  var m = el('tasteModal');
+  if (m) m.classList.remove('open');
+}
+
+function setTasteAnswer(idx) {
+  state.tasteGame.myAnswer = idx;
+  renderTasteGame();
+}
+
+function submitTasteAnswer() {
+  if (state.tasteGame.myAnswer < 0) return;
+  state.tasteGame.iSubmitted = true;
+  sendData({ type: 'taste-answer', answer: state.tasteGame.myAnswer });
+  renderTasteGame();
+}
+
+function nextTasteQuestion() {
+  var remaining = TASTE_QUESTIONS.filter(function(q) {
+    return state.tasteGame.askedIds.indexOf(q.id) === -1;
+  });
+  if (remaining.length === 0) {
+    state.tasteGame.askedIds = [];
+    remaining = TASTE_QUESTIONS.slice();
+  }
+  var q = remaining[Math.floor(Math.random() * remaining.length)];
+  state.tasteGame.askedIds.push(q.id);
+  state.tasteGame.question = q;
+  state.tasteGame.myAnswer = -1;
+  state.tasteGame.partnerAnswer = -1;
+  state.tasteGame.iSubmitted = false;
+  state.tasteGame.partnerSubmitted = false;
+  state.tasteGame.chatMsgs = [];
+  state.tasteGame.phase = 'answering';
+  state.tasteGame.questionNum++;
+  sendData({ type: 'taste-next', question: q, questionNum: state.tasteGame.questionNum });
+  renderTasteGame();
+}
+
+function endTasteGame() {
+  sendData({ type: 'taste-end' });
+  state.tasteGame.active = false;
+  state.tasteGame.phase = 'idle';
+  closeTasteGame();
+}
+
+function sendTasteChat() {
+  var input = el('tasteChatInput');
+  if (!input) return;
+  var text = input.value.trim();
+  if (!text) return;
+  var msg = {
+    username: state.myUsername,
+    content: text,
+    timestamp: new Date().toISOString(),
+  };
+  state.tasteGame.chatMsgs.push(Object.assign({}, msg, { type: 'me' }));
+  sendData({ type: 'taste-chat', username: msg.username, content: msg.content, timestamp: msg.timestamp });
+  input.value = '';
+  renderTasteGame();
+  // Re-focus input
+  setTimeout(function() {
+    var inp = el('tasteChatInput');
+    if (inp) inp.focus();
+  }, 50);
+}
+
+// ============================================================================
+// TASTE GAME RENDER
+// ============================================================================
+function renderTasteGame() {
+  var body = el('tasteBody');
+  var footer = el('tasteFooter');
+  if (!body || !footer) return;
+  body.innerHTML = '';
+  footer.innerHTML = '';
+
+  var tg = state.tasteGame;
+  var q = tg.question;
+  if (!q) return;
+
+  // Question counter
+  body.appendChild(h('div', { class: 'taste-counter' }, 'السؤال ' + tg.questionNum));
+
+  // Question card
+  var qCard = h('div', { class: 'taste-q' },
+    h('div', { class: 'tq-cat' }, q.category),
+    h('div', { class: 'tq-text' }, q.question)
+  );
+
+  // If answering phase
+  if (tg.phase === 'answering' && !tg.iSubmitted) {
+    var optsDiv = h('div', { class: 'tq-opts' });
+    q.options.forEach(function(opt, idx) {
+      optsDiv.appendChild(h('button', {
+        class: 'tq-opt' + (tg.myAnswer === idx ? ' selected' : ''),
+        onclick: function() { setTasteAnswer(idx); },
+      },
+        h('span', {}, opt),
+        h('span', { class: 'tq-check' }, '✓'),
+      ));
+    });
+    qCard.appendChild(optsDiv);
+    body.appendChild(qCard);
+    footer.appendChild(h('button', {
+      class: 'btn btn-primary',
+      disabled: tg.myAnswer < 0,
+      onclick: submitTasteAnswer,
+    }, tg.myAnswer >= 0 ? 'تأكيد الإجابة' : 'اختر إجابة'));
+    return;
+  }
+
+  // Reveal phase (both answered or I submitted waiting)
+  var matched = tg.myAnswer === tg.partnerAnswer && tg.myAnswer >= 0;
+
+  // Reveal cards
+  var revealDiv = h('div', { class: 'taste-reveal' });
+  revealDiv.appendChild(h('div', { class: 'taste-reveal-card' },
+    h('div', { class: 'tr-who' }, state.myUsername + ' (أنت)'),
+    h('div', { class: 'tr-what' }, tg.myAnswer >= 0 ? q.options[tg.myAnswer] : 'لم يُجب بعد')
+  ));
+  revealDiv.appendChild(h('div', { class: 'taste-reveal-card' + (matched ? ' match' : '') },
+    h('div', { class: 'tr-who' }, state.partnerUsername || 'الطرف الآخر'),
+    h('div', { class: 'tr-what' }, tg.partnerAnswer >= 0 ? q.options[tg.partnerAnswer] : 'بانتظار الإجابة...')
+  ));
+  body.appendChild(qCard);
+  body.appendChild(revealDiv);
+
+  // If match indicator
+  if (tg.partnerSubmitted) {
+    var matchText = matched ? '✅ توافق!' : 'اختلاف في الذوق';
+    var matchEl = h('div', { style: 'text-align:center; font-size:13px; color:' + (matched ? '#22c55e' : '#a3a3a3') + '; margin-bottom:10px; font-weight:600;' }, matchText);
+    body.appendChild(matchEl);
+  }
+
+  // Mini chat (only when both answered)
+  if (tg.partnerSubmitted) {
+    var chatDiv = h('div', { class: 'taste-mini-chat' });
+    chatDiv.appendChild(h('div', { class: 'tmc-label' }, '💬 تعلّقا على إجاباتكما'));
+    var msgsDiv = h('div', { class: 'tmc-msgs', id: 'tasteMsgs' });
+    tg.chatMsgs.forEach(function(m) {
+      msgsDiv.appendChild(h('div', { class: 'tmc-msg ' + m.type },
+        h('span', { class: 'tmc-name' }, m.username),
+        m.content
+      ));
+    });
+    chatDiv.appendChild(msgsDiv);
+    chatDiv.appendChild(h('div', { class: 'tmc-composer' },
+      h('input', {
+        id: 'tasteChatInput',
+        type: 'text',
+        placeholder: 'اكتب تعليقاً...',
+        onkeydown: function(e) {
+          if (e.key === 'Enter') { e.preventDefault(); sendTasteChat(); }
+        },
+      }),
+      h('button', { onclick: sendTasteChat }, '↑')
+    ));
+    body.appendChild(chatDiv);
+    footer.appendChild(h('button', { class: 'btn btn-primary', onclick: nextTasteQuestion }, 'السؤال التالي'));
+  } else {
+    body.appendChild(h('div', { class: 'waiting-note' },
+      h('div', { class: 'spinner' }),
+      'بانتظار إجابة الطرف الآخر...'
+    ));
+  }
 }
 
 // ============================================================================
