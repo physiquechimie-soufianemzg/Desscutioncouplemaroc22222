@@ -18,85 +18,78 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .login-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px 24px;width:100%;max-width:360px;text-align:center}
 .login-card h1{font-size:28px;margin-bottom:8px;background:linear-gradient(135deg,var(--rose-light),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .login-card p{color:var(--text2);font-size:14px;margin-bottom:24px}
-.login-card input{width:100%;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:#1a1a1a;color:var(--text);font-size:16px;text-align:center;outline:none;margin-bottom:16px;direction:ltr}
-.login-card input:focus{border-color:var(--rose)}
-.btn{padding:12px 32px;border-radius:12px;border:none;font-size:16px;cursor:pointer;transition:all .2s;font-family:inherit}
-.btn-primary{background:linear-gradient(135deg,var(--rose),var(--rose-dark));color:#fff}
-.btn-primary:hover{transform:scale(1.03);box-shadow:0 4px 20px rgba(225,29,72,.4)}
-.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
-.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
-.btn-outline:hover{border-color:var(--rose);color:var(--rose-light)}
+.login-card input{width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:#1a1a1a;color:var(--text);font-size:16px;outline:none;text-align:center;font-family:inherit;margin-bottom:16px;direction:ltr}
+.btn{padding:12px 24px;border-radius:12px;border:none;font-size:15px;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-primary{background:var(--rose);color:#fff}
+.btn-primary:hover:not(:disabled){background:var(--rose-dark)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--rose)}
 /* Welcome */
-#welcomeScreen{background:radial-gradient(ellipse at top,#2d0a1e 0%,#1a0515 40%,var(--bg) 100%)}
-.welcome-text{font-size:22px;text-align:center;line-height:1.8;max-width:400px;animation:fadeInUp .8s ease}
+.welcome-text{font-size:22px;color:var(--text);text-align:center;line-height:2;padding:0 20px;animation:fadeInUp .8s ease}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-/* Flowers */
-#flowersScreen{background:radial-gradient(ellipse at 30% 20%,#2d0a1e 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,#1a0525 0%,transparent 50%),var(--bg);overflow:hidden;position:relative}
-.flower-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:20px;max-width:340px;margin:20px auto}
-.flower-item{font-size:48px;text-align:center;animation:popIn .5s ease both;cursor:default}
-.flower-item:nth-child(1){animation-delay:.1s}.flower-item:nth-child(2){animation-delay:.2s}.flower-item:nth-child(3){animation-delay:.3s}
-.flower-item:nth-child(4){animation-delay:.4s}.flower-item:nth-child(5){animation-delay:.5s}.flower-item:nth-child(6){animation-delay:.6s}
-.flower-item:nth-child(7){animation-delay:.7s}.flower-item:nth-child(8){animation-delay:.8s}.flower-item:nth-child(9){animation-delay:.9s}
-@keyframes popIn{from{opacity:0;transform:scale(0) rotate(-20deg)}to{opacity:1;transform:scale(1) rotate(0)}}
-.floating-petal{position:absolute;font-size:20px;animation:fall linear infinite;pointer-events:none;opacity:.7}
-@keyframes fall{0%{transform:translateY(-40px) rotate(0deg) translateX(0);opacity:.8}50%{transform:translateY(50vh) rotate(180deg) translateX(30px);opacity:.6}100%{transform:translateY(100vh) rotate(360deg) translateX(-20px);opacity:0}}
+.flower-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:20px;max-width:300px}
+.flower-item{font-size:48px;text-align:center;animation:fadeInUp .6s ease both}
+.flower-item:nth-child(1){animation-delay:.1s}.flower-item:nth-child(2){animation-delay:.2s}
+.flower-item:nth-child(3){animation-delay:.3s}.flower-item:nth-child(4){animation-delay:.4s}
+.flower-item:nth-child(5){animation-delay:.5s}.flower-item:nth-child(6){animation-delay:.6s}
+.flower-item:nth-child(7){animation-delay:.7s}.flower-item:nth-child(8){animation-delay:.8s}
+.flower-item:nth-child(9){animation-delay:.9s}
+.floating-petal{position:absolute;font-size:24px;animation:floatPetal linear infinite;opacity:.6;pointer-events:none;z-index:0}
+@keyframes floatPetal{0%{transform:translateY(-20px) rotate(0deg);opacity:0}10%{opacity:.6}90%{opacity:.6}100%{transform:translateY(100vh) rotate(360deg);opacity:0}}
 /* Lobby */
-#lobbyScreen{background:radial-gradient(ellipse at bottom,#0f1a2e 0%,var(--bg) 70%)}
-.lobby-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px 24px;width:100%;max-width:360px;text-align:center}
-.lobby-card h2{font-size:24px;margin-bottom:6px}
-.lobby-card .partner-name{color:var(--rose-light);font-size:20px;margin-bottom:16px}
-.status-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-left:6px;vertical-align:middle}
-.status-dot.online{background:var(--green);box-shadow:0 0 8px var(--green)}
-.status-dot.offline{background:var(--text2)}
-.conn-status{font-size:12px;color:var(--text2);margin-top:12px}
+.lobby-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px 24px;text-align:center;width:100%;max-width:360px}
+.lobby-card h2{font-size:28px;margin-bottom:4px;background:linear-gradient(135deg,var(--rose-light),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.partner-name{font-size:20px;color:var(--text2);margin:16px 0 8px}
+.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-left:6px}
+.status-dot.online{background:var(--green)}
+.status-dot.offline{background:var(--red)}
+.conn-status{font-size:11px;color:var(--text2);margin-top:16px;opacity:.7}
 /* Game */
-#gameScreen{background:var(--bg);display:flex;flex-direction:column;height:100%}
-.game-header{background:var(--card);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.game-header .q-num{font-size:14px;color:var(--text2)}
-.game-header .q-cat{font-size:12px;color:var(--rose-light);background:rgba(225,29,72,.15);padding:2px 10px;border-radius:20px}
-.game-body{flex:1;overflow-y:auto;padding:20px 16px;-webkit-overflow-scrolling:touch}
-.game-footer{background:var(--card);border-top:1px solid var(--border);padding:12px 16px;flex-shrink:0}
-.question-text{font-size:18px;line-height:1.8;margin-bottom:20px;text-align:center}
-.options-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
-.option-btn{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:14px 16px;font-size:15px;color:var(--text);cursor:pointer;transition:all .2s;text-align:right;font-family:inherit;display:flex;align-items:center;gap:10px}
-.option-btn:hover{border-color:var(--rose);background:#1a1020}
-.option-btn.selected{border-color:var(--rose);background:rgba(225,29,72,.12)}
-.option-btn .opt-letter{width:30px;height:30px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:bold}
+.game-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--card);border-bottom:1px solid var(--border);flex-shrink:0;min-height:48px}
+.game-header .q-num{font-size:14px;font-weight:bold;color:var(--text)}
+.game-header .q-cat{font-size:12px;color:var(--text2)}
+.leave-btn{background:transparent;border:1px solid var(--red);color:var(--red);padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit;white-space:nowrap;transition:all .2s}
+.leave-btn:hover{background:var(--red);color:#fff}
+.game-body{flex:1;overflow-y:auto;padding:16px;-webkit-overflow-scrolling:touch}
+.game-footer{padding:12px 16px;background:var(--card);border-top:1px solid var(--border);flex-shrink:0}
+.question-text{font-size:18px;line-height:2;margin-bottom:20px;color:var(--text)}
+.options-grid{display:flex;flex-direction:column;gap:10px}
+.option-btn{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;border:2px solid var(--border);background:var(--card);color:var(--text);font-size:15px;cursor:pointer;text-align:right;transition:all .2s;font-family:inherit;line-height:1.6;width:100%}
+.option-btn:hover{border-color:rgba(225,29,72,.4);background:rgba(225,29,72,.05)}
+.option-btn.selected{border-color:var(--rose);background:rgba(225,29,72,.1)}
+.opt-letter{width:28px;height:28px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:bold;flex-shrink:0;color:var(--text2)}
 .option-btn.selected .opt-letter{background:var(--rose);color:#fff}
-.waiting-card{text-align:center;padding:40px 20px}
-.waiting-card .check-anim{font-size:48px;margin-bottom:16px;animation:fadeInUp .5s ease}
-.waiting-card p{color:var(--text2);font-size:15px;margin-bottom:8px}
-.waiting-status{display:flex;justify-content:center;gap:24px;margin-top:20px}
-.waiting-status .ws-item{text-align:center}
-.waiting-status .ws-icon{font-size:24px;margin-bottom:4px}
-.waiting-status .ws-label{font-size:12px;color:var(--text2)}
+.waiting-card{padding:16px 0;text-align:center}
+.waiting-status{display:flex;justify-content:center;gap:32px;margin-top:12px}
+.ws-item{display:flex;flex-direction:column;align-items:center;gap:6px}
+.ws-icon{font-size:24px}
+.ws-label{font-size:13px;color:var(--text2)}
 /* Reveal */
-.reveal-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px}
-.reveal-row{display:flex;gap:12px;margin-bottom:12px}
-.reveal-col{flex:1;padding:12px;border-radius:12px;text-align:center}
-.reveal-col.me-col{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3)}
-.reveal-col.partner-col{background:rgba(225,29,72,.1);border:1px solid rgba(225,29,72,.3)}
+.match-indicator{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:10px;font-size:16px;font-weight:bold;margin-bottom:16px}
+.match-indicator.matched{background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+.match-indicator.differed{background:rgba(239,68,68,.1);color:var(--red);border:1px solid rgba(239,68,68,.2)}
+.reveal-card{display:flex;gap:12px;margin-bottom:16px}
+.reveal-col{flex:1;padding:14px;border-radius:12px;text-align:center}
+.me-col{background:rgba(225,29,72,.08);border:1px solid rgba(225,29,72,.15)}
+.partner-col{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15)}
 .reveal-col .who{font-size:12px;color:var(--text2);margin-bottom:6px}
-.reveal-col .ans{font-size:14px;line-height:1.6}
-.match-indicator{text-align:center;padding:12px;border-radius:12px;font-size:16px;font-weight:bold;margin-bottom:16px}
-.match-indicator.matched{background:rgba(34,197,94,.12);color:var(--green);border:1px solid rgba(34,197,94,.3)}
-.match-indicator.differed{background:rgba(239,68,68,.12);color:var(--red);border:1px solid rgba(239,68,68,.3)}
+.reveal-col .ans{font-size:13px;line-height:1.7;color:var(--text)}
 /* Chat */
-.chat-section{margin-top:16px}
-.chat-section h4{font-size:13px;color:var(--text2);margin-bottom:8px}
-#gameChatMsgs{max-height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;margin-bottom:10px;padding:4px 0}
-.chat-bubble{max-width:80%;padding:8px 14px;border-radius:16px;font-size:14px;line-height:1.5;word-wrap:break-word}
-.chat-bubble.me{background:var(--rose);color:#fff;align-self:flex-end;border-bottom-left:8px}
-.chat-bubble.them{background:#1e1e1e;color:var(--text);align-self:flex-start;border-bottom-right:8px}
-.chat-bubble .chat-name{font-size:11px;opacity:.7;margin-bottom:2px}
-.chat-bubble .chat-time{font-size:10px;opacity:.6;text-align:left;margin-top:2px}
-.chat-input-bar{display:flex;gap:8px;align-items:center}
-.chat-input-bar input{flex:1;padding:10px 14px;border-radius:20px;border:1px solid var(--border);background:#1a1a1a;color:var(--text);font-size:14px;outline:none;font-family:inherit}
-.chat-input-bar input:focus{border-color:var(--rose)}
-.chat-input-bar button{width:38px;height:38px;border-radius:50%;border:none;background:var(--rose);color:#fff;font-size:18px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-/* Emoji picker */
-.emoji-picker{position:absolute;bottom:60px;left:16px;right:16px;background:#1a1a1a;border:1px solid var(--border);border-radius:16px;padding:12px;max-height:240px;overflow-y:auto;z-index:100;display:none}
-.emoji-picker.open{display:block}
+.chat-section{margin-top:12px;display:flex;flex-direction:column;gap:8px;flex:1;min-height:0}
+.chat-section h4{font-size:14px;color:var(--text2);flex-shrink:0}
+#gameChatMsgs{flex:1;overflow-y:auto;min-height:80px;max-height:200px;display:flex;flex-direction:column;gap:6px;padding:4px 0}
+.chat-bubble{max-width:80%;padding:8px 12px;border-radius:14px;font-size:13px;line-height:1.6;position:relative}
+.chat-bubble.me{background:rgba(225,29,72,.15);align-self:flex-start;border-bottom-right-radius:4px}
+.chat-bubble.them{background:rgba(59,130,246,.1);align-self:flex-end;border-bottom-left-radius:4px}
+.chat-name{font-size:10px;color:var(--text2);margin-bottom:2px}
+.chat-time{font-size:9px;color:var(--text2);margin-top:2px;text-align:left;opacity:.7}
+.chat-input-bar{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.chat-send-btn{width:38px;height:38px;border-radius:50%;border:none;background:var(--green);color:#fff;font-size:16px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.chat-send-btn:hover{background:#16a34a;transform:scale(1.05)}
+/* Emoji */
+.emoji-picker{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.emoji-picker.open{max-height:220px;overflow-y:auto}
 .emoji-cat{margin-bottom:10px}
 .emoji-cat-title{font-size:11px;color:var(--text2);margin-bottom:6px}
 .emoji-grid{display:flex;flex-wrap:wrap;gap:4px}
@@ -134,6 +127,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 <div id="app"></div>
 <div id="toasts"></div>
 <script>
+
 /* ─── Helpers ─── */
 function h(tag, attrs, children) {
   var el = document.createElement(tag);
@@ -169,12 +163,11 @@ function showToast(msg) {
 
 /* ─── Users ─── */
 var USERS = {
-  soukaina2002: { displayName: 'سكينة', gender: 'female', partner: 'soufiane1996' },
-  soufiane1996: { displayName: 'سفيان', gender: 'male', partner: 'soukaina2002' }
+  soukaina2002: { displayName: '\u0633\u0643\u064A\u0646\u0629', gender: 'female', partner: 'soufiane1996' },
+  soufiane1996: { displayName: '\u0633\u0641\u064A\u0627\u0646', gender: 'male', partner: 'soukaina2002' }
 };
 
-/* ─── Questions ─── */
-var ALL_QUESTIONS = [{id:'c1',cat:'المغامرات والتجارب',q:'النشاط الذي تتمنى تجربته مع {{زوج}} لأول مرة هو',opts:['الغوص في أعماق البحر','تسلق قمة جبل','التخييم تحت النجوم','ركوب الخيل على الشاطئ']},{id:'c2',cat:'المستقبل معاً',q:'أكثر ما تتمنى تحقيقه مع {{الإنسان}} خلال السنوات الخمس القادمة هو',opts:['بيت جديد تعيشان فيه','مشروع مشترك تبنيانه معاً','سفر كبير حول العالم','عائلة صغيرة سعيدة']},{id:'c3',cat:'المستقبل معاً',q:'المشروع الذي تحلم أن تبدأه مع {{شريك}} هو',opts:['كتابة كتاب معاً','هواية مشتركة تمارسانها','مشروع تجاري خاص','تأسيس عمل خيري']},{id:'c4',cat:'الجمال والأناقة',q:'اللحظة التي يبدو فيها {{زوج}} في أجمل حالاته هي',opts:['في الصباح عند الاستيقاظ','في المناسبات والأعراس','عندما يكون مرتاحاً وعفوياً','عندما يضحك من قلبه']},{id:'c5',cat:'المفاجآت والهدايا',q:'أفضل مفاجأة يمكن أن يقدمها لك {{الإنسان}} هي',opts:['موقف رومانسي غير متوقع','هدية اختارها بعناية','كلمة حب في وقتها','تخطيط ليوم كامل من أجلك']},{id:'c6',cat:'الرومانسية والحب',q:'أكثر عبارة رومانسية تحب أن تسمعها من {{حبيب}} هي',opts:['أنت أجمل شيء حصل في حياتي','أنت حياتي كلها','أنا محظوظ لأنك معي','لا أتخيل حياتي بدونك']},{id:'c7',cat:'الرومانسية والحب',q:'أكثر شيء رومانسي تتمنى تقديمه لـ{{زوج}} هو',opts:['وقت غير متوقع تقضيانه معاً','تفاجئه بطبخة يحبها','رسالة مكتوبة بخط يدك','هدية بسيطة تحمل معنى كبير']},{id:'c8',cat:'المشاعر والعواطف',q:'عندما ينظر إليك {{الإنسان}} بصمت، تشعر بـ',opts:['طمأنينة ودفء في القلب','انتماء عميق لروحه','حب يتجدد كل مرة','سعادة لا توصف']},{id:'c9',cat:'الإعجاب والتقدير',q:'أكثر ما يجعلك تشكر الله على وجود {{حبيب}} في حياتك هو',opts:['وجوده بحد ذاته نعمة','حبه الصادق وعطائه','أخلاقه وطبعه الحسن','إخلاصه ووفاؤه']},{id:'c10',cat:'المستقبل معاً',q:'الصورة التي ترسمها لمستقبلك مع {{شريك}} هي',opts:['نجاح كبير وبناء أسرة قوية','حياة بسيطة وهادئة مليئة بالحب','مغامرات وسفر لا ينتهي','بيت دافئ وعائلة سعيدة']},{id:'c11',cat:'الصفات المحببة',q:'عندما يبتسم لك {{الإنسان}} من قلبه، أول شيء تشعر به هو',opts:['فخر إنه من نصيبي','أمان وثقة بالمستقبل','حب يتدفق في عروقي','سعادة تغمر كل كياني']},{id:'c12',cat:'الاحترام والثقة',q:'أكثر ما يقدره {{شريك}} فيك هو',opts:['خصوصيتي واستقلاليتي','رأيي وطريقة تفكيري','عقلي ونجاحي في عملي','حناني وعاطفتي']},{id:'c13',cat:'العلاقة الحميمة',q:'أهم شيء في العلاقة الحميمة بينك وبين {{زوج}} هو',opts:['الراحة والثقة المتبادلة','التواصل العاطفي والكلمات','الاهتمام بإسعاد الطرف الآخر','الشغف والعاطفة الجياشة']},{id:'c14',cat:'الاحترام والثقة',q:'الشيء الذي يزيد ثقتك بـ{{حبيب}} هو',opts:['صدقه في كل شيء يخبرك به','احترامه لقراراتك ورأيك','دعمه لك في أوقات ضعفك','حفظه لأسرارك وخفاياك']},{id:'c15',cat:'الرومانسية والحب',q:'أجمل ليلة قضاءها مع {{زوج}} تكون عندما',opts:['تتحدثان حتى الفجر عن كل شيء','تمشيان في هدوء الليل معاً','تجلسان في صمت مريح ومطمئن','تسهران معاً يشاهدان شيئاً تحبانه']},{id:'c16',cat:'المفاجآت والهدايا',q:'أفضل هدية يمكن أن تفاجئ بها من {{الإنسان}} هي',opts:['إكسسوار بسيط يحمله كل يوم','مفاجأة سفر لمكان تحلم به','شيء صنعها بيديه خصيصاً لك','رسالة طويلة مكتوبة بخط يده']},{id:'c17',cat:'الصفات المحببة',q:'أكثر صفة في {{حبيب}} تجذبك هي',opts:['لطفه وطريقة تعامله','قوته وحسمه في القرارات','روح الدعابة والمرح','ذكاؤه وعمق تفكيره']},{id:'c18',cat:'الجمال والأناقة',q:'الجزء الذي جذبك أولاً في {{زوج}} كان',opts:['عيونه ونظراته','ابتسامته وطريقة ضحكه','صوته وطريقة كلامه','شكله العام وأناقته']},{id:'c19',cat:'المشاعر والعواطف',q:'عندما تحتاج الدعم العاطفي، تتوقع من {{شريك}} أن',opts:['يستمع إليك بصبر دون مقاطعة','يحتضنك ويشعرك بالأمان','يقدم حلولاً عملية لمشكلتك','يجلس بجانبك بصمت حتى تهدأ']},{id:'c20',cat:'المستقبل معاً',q:'إذا كان عليك اختيار مكان واحد تعيش فيه مع {{الإنسان}}، ستختار',opts:['مدينة حديثة مليانة حياة','بلدة هادئة قريبة من الطبيعة','مكان قريب من الأهل والعائلة','أي مكان ما دام معي']},{id:'c21',cat:'الاحترام والثقة',q:'أكثر موقف يزيد حبك لـ{{حبيب}} هو عندما',opts:['يدافع عنك أمام الآخرين','يتنازل عن رأيه إرضاءً لك','يتذكر تفاصيل صغيرة عنك','يضعك كأولوية في حياته']},{id:'c22',cat:'الرومانسية والحب',q:'أكثر وقت تشعر فيه بالقرب من {{زوج}} هو',opts:['قبل النوم عندما تتحدثان','في الصباح عند بدء اليوم','عند الأكل معاً على المائدة','في أي لحظة تجمعكما']},{id:'c23',cat:'المشاعر والعواطف',q:'الكلمة التي تصف مشاعرك تجاه {{الإنسان}} هي',opts:['أمان','انتماء','شغف','طمأنينة']},{id:'c24',cat:'الصفات المحببة',q:'الشيء البسيط الذي يفعله {{حبيب}} ويجعلك تبتسم هو',opts:['نظرة معينة من عيونه','طريقة يقول بها اسمك','لمسته العفوية على يدك','رسالة عادية يسأل فيها عنك']},{id:'c25',cat:'المستقبل معاً',q:'في عشرين سنة من الآن، تتخيل نفسك مع {{شريك}}',opts:['في بيتنا الخاص محاطين بالعائلة','نسافر معاً حول العالم','نجلس معاً نتذكر ذكرياتنا','نعيش حياة هادئة وسعيدة معاً']},{id:'t1',cat:'الطول والبنية',q:'ما هو الطول المثالي الذي تتمناه في شريك حياتك؟',opts:['أطول مني بكثير','قريباً جداً من طولي','أقصر مني بكثير','الطول غير مهم نهائياً']},{id:'t2',cat:'الطول والبنية',q:'كيف تفضل بنية وجسم شريك حياتك؟',opts:['نحيف/ة ورشيق/ة','رياضي/ة ومفتول العضلات','ممتلئ/ة قليلاً','متناسق/ة بشكل عام']},{id:'t3',cat:'البشرة والملامح',q:'ما هو لون البشرة الذي تجده الأكثر جاذبية؟',opts:['بشرة فاتحة','بشرة حنطية قمحية','بشرة سمراء دافئة','لا يهم، المهم نضارة الوجه']},{id:'t4',cat:'البشرة والملامح',q:'كيف تفضل شعر شريك حياتك؟',opts:['طويل وناعم','قصير وأنيق','مجعد بشكل جذاب','أي شكل طالما مرتب ونظيف']},{id:'t5',cat:'البشرة والملامح',q:'ما هو لون العيون الذي تفضله أكثر؟',opts:['عيون ملونة (خضراء/زرقاء/عسلية)','عيون سوداء أو بنية داكنة','شكل العيون أهم من لونها','غير مهم']},{id:'t6',cat:'البشرة والملامح',q:'ما رأيك في الغمازات والشامات على الوجه؟',opts:['أجدها جذابة جداً','أفضل الوجه النظيف بدون علامات','تعجبني إن كانت عفوية وطبيعية','لا أهتم']},{id:'t7',cat:'الأناقة واللباس',q:'ما هو أسلوب اللباس الذي تفضله في شريكك؟',opts:['كلاسيكي ورسمي دائماً','كاجوال وبسيط وعملي','عصري يتابع الموضة','متوازن بين الأناقة والراحة']},{id:'t8',cat:'الأناقة واللباس',q:'مدى اهتمامك بالعطور والرائحة الشخصية للشريك:',opts:['شرط أساسي لا أتنازل عنه','يهمني النظافة العامة أولاً','أحب رائحة معينة أتناسب معها','غير مهم']},{id:'t9',cat:'الأناقة واللباس',q:'كيف تفضل أن يهتم شريكك بمظهره أمام الناس؟',opts:['يهتم بأدق التفاصيل دائماً','طبيعي وتلقائي دون تكلف','يوازن بين الأناقة والبساطة','المهم يرتاح هو أولاً']},{id:'t10',cat:'الصحة واللياقة',q:'مدى اهتمامك بأن يمارس شريكك الرياضة؟',opts:['أفضل أن يذهب للجيم بانتظام','يكفي أن يحافظ على صحته','أتمنى نتشارك في نشاط بدني معاً','غير مهم']},{id:'t11',cat:'الصحة واللياقة',q:'الفارق في العمر المقبول بالنسبة لك:',opts:['أفضل من يبدو أكبر مني سناً','أفضل من يبدو في مثل عمري','لا يهم العمر المهم النضج','أفضله أصغر مني قليلاً']},{id:'t12',cat:'الصحة واللياقة',q:'الابتسامة وصحة الأسنان عند الشريك:',opts:['يجب أن تكون مثالية ومرتبة','طبيعية حتى لو غير منتظمة','المهم ابتسامة دافئة تريح النفس','غير مهم']},{id:'t13',cat:'الصوت واللغة',q:'نبرة الصوت التي تفضلها في شريكك:',opts:['هادئة وناعمة','قوية وجهورية','متزنة ومريحة للأذن','الصوت غير مهم']},{id:'t14',cat:'الصوت واللغة',q:'لغة الجسد وطريقة المشي التي تعجبك:',opts:['حركات سريعة وحيوية','حركات رصينة وهادئة','لغة جسد ثقة ووقار','لا ألاحظ هذه التفاصيل']},{id:'t15',cat:'المزاج والطباع',q:'كيف تفضل طبيعة مزاج شريك حياتك؟',opts:['هادئ/ة جداً وصامت/ة','حيوي/ة ومرح/ة باستمرار','متوازن/ة حسب الموقف','يتنوع بين الحين والآخر']},{id:'t16',cat:'المزاج والطباع',q:'عند حدوث خلاف، كيف تفضل أن يتصرف شريكك؟',opts:['ينسحب حتى يهدأ ثم يناقش بهدوء','يعبر عن رأيه فوراً وينهي الموضوع','يمتص غضبي بحكمة وهدوء','يتشاور معي لنحل الأمر معاً']},{id:'t17',cat:'المزاج والطباع',q:'حس الدعابة والمرح لدى الشريك:',opts:['مرح جداً ويضحك باستمرار','جاد ويراقب الموقف','يفهم نكاتي ويشاركني الضحك','خفيف الظل في الوقت المناسب']},{id:'t18',cat:'المزاج والطباع',q:'عند الحزن أو الضغوط، تتوقع من شريكك أن:',opts:['يعطيني مساحة أتعامل بمفردي','يكون بجانبي ويستمع لي','يوازن بين الدعم والمساحة','يحاول إسعادي بأي طريقة']},{id:'t19',cat:'الأخلاق والقيم',q:'كيف تفضل الصراحة في علاقتك مع شريكك؟',opts:['صراحة مطلقة في كل شيء حتى لو مؤلمة','صراحة بلطف ومراعاة للمشاعر','صراحة فيما يخص العلاقة فقط','حسب الموقف والظرف']},{id:'t20',cat:'الأخلاق والقيم',q:'الأمانة والوفاء بالوعود في نظرك:',opts:['خط أحمر، أي وعد يجب أن يُنفذ','أتفهم الأعذار إن كانت النية طيبة','أهمية الالتزام بالوعود الكبيرة فقط','المهم النية الحسنة']},{id:'t21',cat:'الأخلاق والقيم',q:'الغيرة في العلاقة بالنسبة لك:',opts:['غيور/ة وأحب أن أشعر بالتملك','أثق ثقة عمياء ولا أغار','غيرة معتدلة تشعرني بالحب','لا أتكلم عن هذا الموضوع']},{id:'t22',cat:'العلاقات الاجتماعية',q:'طبيعة العلاقات الاجتماعية المثالية لشريكك:',opts:['اجتماعي/ة جداً ومعارفه كثر','بيوتي/ة يكتفي بدائرة ضيقة','يوازن بين الاجتماعي والخاص','لا يهتم كثيراً بالعلاقات']},{id:'t23',cat:'العلاقات الاجتماعية',q:'علاقة شريكك بأهله وأسرته:',opts:['الأهل أولوية قصوى دائماً','يضع حدوداً واضحة مع أهله','يوازن بين بر الأهل واستقلالية البيت','لا أتدخل في هذا الموضوع']},{id:'t24',cat:'العلاقات الاجتماعية',q:'التسامح والقدرة على نسيان الأخطاء:',opts:['يسامح بسرعة ولا يحمل ضغينة','يصعب عليه النسيان ويناقش الموضوع','يعاتب بهدوء ويغفر إن شعر بالتقدير','يعتمد على حجم الخطأ']},{id:'t25',cat:'الحياة اليومية',q:'الرومانسية وإظهار الحب في الحياة اليومية:',opts:['رومانسي يحب الهدايا والمفاجآت دائماً','واقعي لكن أفعاله تثبت حبه','يعبر بحرارة ودون تكلف','رومانسي في المناسبات فقط']},{id:'t26',cat:'الحياة اليومية',q:'درجة التدين والالتزام الديني:',opts:['ملتزم جداً بالفرائض والسنن','معتدل ويحب الدين بيسر','متوافق مع مستواي في الالتزام','غير مهم في هذا الجانب']},{id:'t27',cat:'الحياة اليومية',q:'الصبر وطول البال مع الشريك:',opts:['صبور جداً ولا يستفز بسهولة','حازم وسريع في اتخاذ القرار','صبور في الصعب وحازم في وقت الحزم','يعتمد على الموقف']},{id:'t28',cat:'الحياة اليومية',q:'الذكاء وسرعة البديهة عند الشريك:',opts:['عبقري ويحب النقاشات العميقة','بسيط التفكير يركز على العملي','ذكي اجتماعياً وعاطفياً','المهم يفهميني']},{id:'t29',cat:'الحياة اليومية',q:'النظام والترتيب داخل المنزل:',opts:['مهووس بالنظام والنظافة','فوضوي قليلاً ولا يكترث','يشاركني التنظيم بأسلوب متفق عليه','المهم البيت مريح ونظيف']},{id:'t30',cat:'الحياة اليومية',q:'القناعة مقابل الطموح المادي:',opts:['قنوع جداً ويرضى بالقليل','متطلع دائماً للأفضل والثراء','يسعى للتطوير بعقلانية واتزان','المهم السعادة والراحة']},{id:'e1',cat:'جس النبض',q:'لو قالوا لك إنك لازم تقضي يوم كامل في مكان معزول مع شخص واحد من معارفك، مين تختار؟',opts:['صديقك المقرب','شخص تطمن وأنت معاه','أقعد لوحدي أحسن','أي حد والإنترنت والكهرباء']},{id:'e2',cat:'جس النبض',q:'لما تشوف رسالة من الطرف الآخر فجأة، إيه أول إحساس بيجيلك؟',opts:['فضول أعرف كاتب إيه','ابتسامة وتحسن في المود','بكسل أفتحها دلوقتي','إحساس عادي زي أي إشعار']},{id:'e3',cat:'جس النبض',q:'في رأيك، إيه الحاجة اللي بتخلي اتنين متوافقين على بعض جداً؟',opts:['تشابه الاهتمامات والهوايات','كيمياء وتفاهم من غير كلام','إن كل واحد يكمل نواقص التاني','إنهم ميتخانقوش كتير والموضوع نصيب']},{id:'e4',cat:'اللعب على الوتر العاطفي',q:'لو يومك كان سيء جداً وضغط الشغل عالي، إيه أكتر حاجة ممكن تهون عليك؟',opts:['أنام وأقفل الموبايل','أسمع صوت الطرف الآخر أو أشوفه','أخرج مع أصحابي أفصل','أكلة حلوة أو حلقة مسلسلي المفضل']},{id:'e5',cat:'اللعب على الوتر العاطفي',q:'هل بتؤمن إن الشخص ممكن يخطف قلب حد من غير ما يقصد، بمجرد تفاصيله العفوية؟',opts:['لأ، الحب محتاج وقت طويل','آه جداً، ودا حصل معايا فعلاً','على حسب الشخص والموقف','دي حاجات في الأفلام بس']},{id:'e6',cat:'اللعب على الوتر العاطفي',q:'إيه أكتر صفة في الطرف الآخر بتخليك تحس إنه شخص مميز ومختلف عن كل اللي حواليك؟',opts:['طريقة كلامه وطيبته','اهتمامه بي وتفاصيله اللي بتفهمني','جنونه وعفويته','إنه شخص مجتهد وناجح']},{id:'e7',cat:'الحصار الذكي',q:'لو بكرا الصبح اختفى الطرف الآخر فجأة من حياتك وما بقاش له أي أثر، إيه أول حاجة هتعملها؟',opts:['هقلق وأقلب الدنيا عليه لحد ما ألاقيه','هحس إن في جزء غالي ضاع مني','هفترض إنه مشغول وهيرجع','هبعت رسالة عادية أسأل عليه']},{id:'e8',cat:'الحصار الذكي',q:'علاقتكما الحالية وتوافقكما، تفتكر هي مجرد صداقة قوية ولا في مشاعر تانية أكبر بدأت تظهر؟',opts:['صداقة عزيزة جداً','مشاعر أكبر بكتير وساعات مستني الوقت المناسب','لسه مش قادر أحدد المسمى بس غالي عندي','لسه بنتعرف على بعض أكتر والوقت هيحدد']},{id:'e9',cat:'الحصار الذكي',q:'لما تكونون مع بعض أو بنتكلموا، هل تحس بضربات قلب سريعة ولا براحة وهدوء غريب؟',opts:['راحة وأمان كأني في بيتي','لخبطة وضربات قلب سريعة','إحساس طبيعي وعادي','بكون مركز في الموضوع اللي بنتكلم فيه']},{id:'e10',cat:'رصاصة الرحمة',q:'تخيل لو جاءك وقاللك \'أنا وقعت في حبك\'.. هيكون إيه رد فعلك السريع؟',opts:['هقوله \'وأنا كمان كنت مستني الكلمة دي\'','هتنح من الفرحة والصدمة','هضحك وهقوله كنت حاسس','هسكت شوية ممكن أغير الموضوع']},{id:'e11',cat:'رصاصة الرحمة',q:'بصراحة ومن غير لف ودوران.. الطرف الآخر بقى بالنسبالك إيه؟',opts:['الشخص اللي خطف قلبي وعقلي','حد مهم جداً ومقدرش أستغنى عنه','الإجابة محتاجة قعدة أقولها في العين','حد مريح ومبسوط بوجوده في حياتي']},{id:'f1',cat:'طباع وعادات العائلة 👥',q:'إذا تجمعنا في بيت العائلة يوم الإجازة، ما هو النشاط الأساسي المتوقع؟',opts:['نقاش عائلي حاد وعميق في السياسة أو أمور الحياة','جولة ضحك وتنكيت ومواقف مضحكة مستمرة','الأكل ثم الأكل ثم النوم الجماعي أمام التلفزيون','هدوء تام وكل شخص يمسك هاتفه الذكي']},{id:'f2',cat:'طباع وعادات العائلة 👥',q:'من هو الشخص في عائلتي الذي يعتبر "وزير الخارجية" (صاحب العلاقات والقرارات والعزائم)؟',opts:['الأب بكل تأكيد','الأم (هي القائد الخفي)','أحد الأخوة/الأخوات الكبار','العائلة ديمقراطية جداً والكل يشارك']},{id:'f3',cat:'طباع وعادات العائلة 👥',q:'كيف تتعامل عائلتي مع "المواعيد" في المناسبات؟',opts:['نصل قبل الموعد بنصف ساعة (دقة عسكرية)','نصل على الموعد تماماً بالدقيقة','نتأخر ساعة على الأقل، "توقيت عائلي خاص"','ننسى الموعد من الأساس ونعتذر في آخر لحظة']},{id:'f4',cat:'من هو الشخص الذي...؟ 🔍',q:'إذا وقعتُ في مشكلة كبيرة واحتجت نصيحة سريعة، من أول شخص من عائلتي سأتصل به؟',opts:['أمي','أبي','أخي/أختي المقرب(ة)','لن أخبر أحداً وسأحاول حلها بنفسي']},{id:'f5',cat:'من هو الشخص الذي...؟ 🔍',q:'من هو فرد العائلة الأكثر "عاطفية وحنانًا" والذي يسهل إقناعه أو كسب صفه دائماً؟',opts:['الأم','الأب (رغم ملامحه الجادة)','أختي الصغرى/أخي الأصغر','الجد أو الجدة']},{id:'f6',cat:'من هو الشخص الذي...؟ 🔍',q:'من هو الشخص في عائلتي الذي يمتلك "رادار النقد" (يلاحظ كل التفاصيل الصغيرة مثل الملابس، الوزن، تسريحة الشعر)؟',opts:['أمي الغالية','أختي الكبرى','خالاتي أو عماتي','لا أحد، عائلتي لا تدقق في هذه التفاصيل']},{id:'f7',cat:'مواقف وخطط مستقبلية 🔮',q:'ما هي أكثر طبخة مشهورة بها عائلتي (نتميز بها في العزائم)؟',opts:['المحاشي والمحشيات بأنواعها','الصواني في الفرن (بشاميل، رقاق، إلخ)','المشويات والأكلات السريعة','الحلويات والمخبوزات']},{id:'f8',cat:'مواقف وخطط مستقبلية 🔮',q:'كيف تتوقع أن تكون علاقتك مع (حماتك / حماك) مستقبلاً بناءً على ما عرفته؟',opts:['علاقة رسمية جداً ومليئة بالاحترام المتبادل والحدود','علاقة أصدقاء مقربين و"دردشة" مستمرة','علاقة "اتقاء شر" ومجاملات دبلوماسية خفيفة','علاقة ابن/ابنة حقيقية مليئة بالدلال']},{id:'f9',cat:'مواقف وخطط مستقبلية 🔮',q:'في الأعياد والمناسبات الكبيرة، ما هو الطقس العائلي المقدس الذي لا يمكن تغييره؟',opts:['السفر خارج المدينة تماماً','الغداء الجماعي الإجباري في بيت العائلة الكبير','السهر حتى الفجر مع الأقارب والأبناء','توزيع العيديات والتقاط الصور التذكارية الرسمية']}];
+/* ─── Questions ─── var ALL_QUESTIONS = [{"id":"c1","cat":"المغامرات والتجارب","q":"النشاط الذي تتمنى تجربته مع {{زوج}} لأول مرة هو","opts":["الغوص في أعماق البحر","تسلق قمة جبل","التخييم تحت النجوم","ركوب الخيل على الشاطئ"]},{"id":"c2","cat":"المستقبل معاً","q":"أكثر ما تتمنى تحقيقه مع {{الإنسان}} خلال السنوات الخمس القادمة هو","opts":["بيت جديد تعيشان فيه","مشروع مشترك تبنيانه معاً","سفر كبير حول العالم","عائلة صغيرة سعيدة"]},{"id":"c3","cat":"المستقبل معاً","q":"المشروع الذي تحلم أن تبدأه مع {{شريك}} هو","opts":["كتابة كتاب معاً","هواية مشتركة تمارسانها","مشروع تجاري خاص","تأسيس عمل خيري"]},{"id":"c4","cat":"الجمال والأناقة","q":"اللحظة التي يبدو فيها {{زوج}} في أجمل حالاته هي","opts":["في الصباح عند الاستيقاظ","في المناسبات والأعراس","عندما يكون مرتاحاً وعفوياً","عندما يضحك من قلبه"]},{"id":"c5","cat":"المفاجآت والهدايا","q":"أفضل مفاجأة يمكن أن يقدمها لك {{الإنسان}} هي","opts":["موقف رومانسي غير متوقع","هدية اختارها بعناية","كلمة حب في وقتها","تخطيط ليوم كامل من أجلك"]},{"id":"c6","cat":"الرومانسية والحب","q":"أكثر عبارة رومانسية تحب أن تسمعها من {{حبيب}} هي","opts":["أنت أجمل شيء حصل في حياتي","أنت حياتي كلها","أنا محظوظ لأنك معي","لا أتخيل حياتي بدونك"]},{"id":"c7","cat":"الرومانسية والحب","q":"أكثر شيء رومانسي تتمنى تقديمه لـ{{زوج}} هو","opts":["وقت غير متوقع تقضيانه معاً","تفاجئه بطبخة يحبها","رسالة مكتوبة بخط يدك","هدية بسيطة تحمل معنى كبير"]},{"id":"c8","cat":"المشاعر والعواطف","q":"عندما ينظر إليك {{الإنسان}} بصمت، تشعر بـ","opts":["طمأنينة ودفء في القلب","انتماء عميق لروحه","حب يتجدد كل مرة","سعادة لا توصف"]},{"id":"c9","cat":"الإعجاب والتقدير","q":"أكثر ما يجعلك تشكر الله على وجود {{حبيب}} في حياتك هو","opts":["وجوده بحد ذاته نعمة","حبه الصادق وعطائه","أخلاقه وطبعه الحسن","إخلاصه ووفاؤه"]},{"id":"c10","cat":"المستقبل معاً","q":"الصورة التي ترسمها لمستقبلك مع {{شريك}} هي","opts":["نجاح كبير وبناء أسرة قوية","حياة بسيطة وهادئة مليئة بالحب","مغامرات وسفر لا ينتهي","بيت دافئ وعائلة سعيدة"]},{"id":"c11","cat":"الصفات المحببة","q":"عندما يبتسم لك {{الإنسان}} من قلبه، أول شيء تشعر به هو","opts":["فخر إنه من نصيبي","أمان وثقة بالمستقبل","حب يتدفق في عروقي","سعادة تغمر كل كياني"]},{"id":"c12","cat":"الاحترام والثقة","q":"أكثر ما يقدره {{شريك}} فيك هو","opts":["خصوصيتي واستقلاليتي","رأيي وطريقة تفكيري","عقلي ونجاحي في عملي","حناني وعاطفتي"]},{"id":"c13","cat":"العلاقة الحميمة","q":"أهم شيء في العلاقة الحميمة بينك وبين {{زوج}} هو","opts":["الراحة والثقة المتبادلة","التواصل العاطفي والكلمات","الاهتمام بإسعاد الطرف الآخر","الشغف والعاطفة الجياشة"]},{"id":"c14","cat":"الاحترام والثقة","q":"الشيء الذي يزيد ثقتك بـ{{حبيب}} هو","opts":["صدقه في كل شيء يخبرك به","احترامه لقراراتك ورأيك","دعمه لك في أوقات ضعفك","حفظه لأسرارك وخفاياك"]},{"id":"c15","cat":"الرومانسية والحب","q":"أجمل ليلة قضاءها مع {{زوج}} تكون عندما","opts":["تتحدثان حتى الفجر عن كل شيء","تمشيان في هدوء الليل معاً","تجلسان في صمت مريح ومطمئن","تسهران معاً يشاهدان شيئاً تحبانه"]},{"id":"c16","cat":"المفاجآت والهدايا","q":"أفضل هدية يمكن أن تفاجئ بها من {{الإنسان}} هي","opts":["إكسسوار بسيط يحمله كل يوم","مفاجأة سفر لمكان تحلم به","شيء صنعها بيديه خصيصاً لك","رسالة طويلة مكتوبة بخط يده"]},{"id":"c17","cat":"الصفات المحببة","q":"أكثر صفة في {{حبيب}} تجذبك هي","opts":["لطفه وطريقة تعامله","قوته وحسمه في القرارات","روح الدعابة والمرح","ذكاؤه وعمق تفكيره"]},{"id":"c18","cat":"الجمال والأناقة","q":"الجزء الذي جذبك أولاً في {{زوج}} كان","opts":["عيونه ونظراته","ابتسامته وطريقة ضحكه","صوته وطريقة كلامه","شكله العام وأناقته"]},{"id":"c19","cat":"المشاعر والعواطف","q":"عندما تحتاج الدعم العاطفي، تتوقع من {{شريك}} أن","opts":["يستمع إليك بصبر دون مقاطعة","يحتضنك ويشعرك بالأمان","يقدم حلولاً عملية لمشكلتك","يجلس بجانبك بصمت حتى تهدأ"]},{"id":"c20","cat":"المستقبل معاً","q":"إذا كان عليك اختيار مكان واحد تعيش فيه مع {{الإنسان}}، ستختار","opts":["مدينة حديثة مليانة حياة","بلدة هادئة قريبة من الطبيعة","مكان قريب من الأهل والعائلة","أي مكان ما دام معي"]},{"id":"c21","cat":"الاحترام والثقة","q":"أكثر موقف يزيد حبك لـ{{حبيب}} هو عندما","opts":["يدافع عنك أمام الآخرين","يتنازل عن رأيه إرضاءً لك","يتذكر تفاصيل صغيرة عنك","يضعك كأولوية في حياته"]},{"id":"c22","cat":"الرومانسية والحب","q":"أكثر وقت تشعر فيه بالقرب من {{زوج}} هو","opts":["قبل النوم عندما تتحدثان","في الصباح عند بدء اليوم","عند الأكل معاً على المائدة","في أي لحظة تجمعكما"]},{"id":"c23","cat":"المشاعر والعواطف","q":"الكلمة التي تصف مشاعرك تجاه {{الإنسان}} هي","opts":["أمان","انتماء","شغف","طمأنينة"]},{"id":"c24","cat":"الصفات المحببة","q":"الشيء البسيط الذي يفعله {{حبيب}} ويجعلك تبتسم هو","opts":["نظرة معينة من عيونه","طريقة يقول بها اسمك","لمسته العفوية على يدك","رسالة عادية يسأل فيها عنك"]},{"id":"c25","cat":"المستقبل معاً","q":"في عشرين سنة من الآن، تتخيل نفسك مع {{شريك}}","opts":["في بيتنا الخاص محاطين بالعائلة","نسافر معاً حول العالم","نجلس معاً نتذكر ذكرياتنا","نعيش حياة هادئة وسعيدة معاً"]},{"id":"t1","cat":"الطول والبنية","q":"ما هو الطول المثالي الذي تتمناه في شريك حياتك؟","opts":["أطول مني بكثير","قريباً جداً من طولي","أقصر مني بكثير","الطول غير مهم نهائياً"]},{"id":"t2","cat":"الطول والبنية","q":"كيف تفضل بنية وجسم شريك حياتك؟","opts":["نحيف/ة ورشيق/ة","رياضي/ة ومفتول العضلات","ممتلئ/ة قليلاً","متناسق/ة بشكل عام"]},{"id":"t3","cat":"البشرة والملامح","q":"ما هو لون البشرة الذي تجده الأكثر جاذبية؟","opts":["بشرة فاتحة","بشرة حنطية قمحية","بشرة سمراء دافئة","لا يهم، المهم نضارة الوجه"]},{"id":"t4","cat":"البشرة والملامح","q":"كيف تفضل شعر شريك حياتك؟","opts":["طويل وناعم","قصير وأنيق","مجعد بشكل جذاب","أي شكل طالما مرتب ونظيف"]},{"id":"t5","cat":"البشرة والملامح","q":"ما هو لون العيون الذي تفضله أكثر؟","opts":["عيون ملونة (خضراء/زرقاء/عسلية)","عيون سوداء أو بنية داكنة","شكل العيون أهم من لونها","غير مهم"]},{"id":"t6","cat":"البشرة والملامح","q":"ما رأيك في الغمازات والشامات على الوجه؟","opts":["أجدها جذابة جداً","أفضل الوجه النظيف بدون علامات","تعجبني إن كانت عفوية وطبيعية","لا أهتم"]},{"id":"t7","cat":"الأناقة واللباس","q":"ما هو أسلوب اللباس الذي تفضله في شريكك؟","opts":["كلاسيكي ورسمي دائماً","كاجوال وبسيط وعملي","عصري يتابع الموضة","متوازن بين الأناقة والراحة"]},{"id":"t8","cat":"الأناقة واللباس","q":"مدى اهتمامك بالعطور والرائحة الشخصية للشريك:","opts":["شرط أساسي لا أتنازل عنه","يهمني النظافة العامة أولاً","أحب رائحة معينة أتناسب معها","غير مهم"]},{"id":"t9","cat":"الأناقة واللباس","q":"كيف تفضل أن يهتم شريكك بمظهره أمام الناس؟","opts":["يهتم بأدق التفاصيل دائماً","طبيعي وتلقائي دون تكلف","يوازن بين الأناقة والبساطة","المهم يرتاح هو أولاً"]},{"id":"t10","cat":"الصحة واللياقة","q":"مدى اهتمامك بأن يمارس شريكك الرياضة؟","opts":["أفضل أن يذهب للجيم بانتظام","يكفي أن يحافظ على صحته","أتمنى نتشارك في نشاط بدني معاً","غير مهم"]},{"id":"t11","cat":"الصحة واللياقة","q":"الفارق في العمر المقبول بالنسبة لك:","opts":["أفضل من يبدو أكبر مني سناً","أفضل من يبدو في مثل عمري","لا يهم العمر المهم النضج","أفضله أصغر مني قليلاً"]},{"id":"t12","cat":"الصحة واللياقة","q":"الابتسامة وصحة الأسنان عند الشريك:","opts":["يجب أن تكون مثالية ومرتبة","طبيعية حتى لو غير منتظمة","المهم ابتسامة دافئة تريح النفس","غير مهم"]},{"id":"t13","cat":"الصوت واللغة","q":"نبرة الصوت التي تفضلها في شريكك:","opts":["هادئة وناعمة","قوية وجهورية","متزنة ومريحة للأذن","الصوت غير مهم"]},{"id":"t14","cat":"الصوت واللغة","q":"لغة الجسد وطريقة المشي التي تعجبك:","opts":["حركات سريعة وحيوية","حركات رصينة وهادئة","لغة جسد ثقة ووقار","لا ألاحظ هذه التفاصيل"]},{"id":"t15","cat":"المزاج والطباع","q":"كيف تفضل طبيعة مزاج شريك حياتك؟","opts":["هادئ/ة جداً وصامت/ة","حيوي/ة ومرح/ة باستمرار","متوازن/ة حسب الموقف","يتنوع بين الحين والآخر"]},{"id":"t16","cat":"المزاج والطباع","q":"عند حدوث خلاف، كيف تفضل أن يتصرف شريكك؟","opts":["ينسحب حتى يهدأ ثم يناقش بهدوء","يعبر عن رأيه فوراً وينهي الموضوع","يمتص غضبي بحكمة وهدوء","يتشاور معي لنحل الأمر معاً"]},{"id":"t17","cat":"المزاج والطباع","q":"حس الدعابة والمرح لدى الشريك:","opts":["مرح جداً ويضحك باستمرار","جاد ويراقب الموقف","يفهم نكاتي ويشاركني الضحك","خفيف الظل في الوقت المناسب"]},{"id":"t18","cat":"المزاج والطباع","q":"عند الحزن أو الضغوط، تتوقع من شريكك أن:","opts":["يعطيني مساحة أتعامل بمفردي","يكون بجانبي ويستمع لي","يوازن بين الدعم والمساحة","يحاول إسعادي بأي طريقة"]},{"id":"t19","cat":"الأخلاق والقيم","q":"كيف تفضل الصراحة في علاقتك مع شريكك؟","opts":["صراحة مطلقة في كل شيء حتى لو مؤلمة","صراحة بلطف ومراعاة للمشاعر","صراحة فيما يخص العلاقة فقط","حسب الموقف والظرف"]},{"id":"t20","cat":"الأخلاق والقيم","q":"الأمانة والوفاء بالوعود في نظرك:","opts":["خط أحمر، أي وعد يجب أن يُنفذ","أتفهم الأعذار إن كانت النية طيبة","أهمية الالتزام بالوعود الكبيرة فقط","المهم النية الحسنة"]},{"id":"t21","cat":"الأخلاق والقيم","q":"الغيرة في العلاقة بالنسبة لك:","opts":["غيور/ة وأحب أن أشعر بالتملك","أثق ثقة عمياء ولا أغار","غيرة معتدلة تشعرني بالحب","لا أتكلم عن هذا الموضوع"]},{"id":"t22","cat":"العلاقات الاجتماعية","q":"طبيعة العلاقات الاجتماعية المثالية لشريكك:","opts":["اجتماعي/ة جداً ومعارفه كثر","بيوتي/ة يكتفي بدائرة ضيقة","يوازن بين الاجتماعي والخاص","لا يهتم كثيراً بالعلاقات"]},{"id":"t23","cat":"العلاقات الاجتماعية","q":"علاقة شريكك بأهله وأسرته:","opts":["الأهل أولوية قصوى دائماً","يضع حدوداً واضحة مع أهله","يوازن بين بر الأهل واستقلالية البيت","لا أتدخل في هذا الموضوع"]},{"id":"t24","cat":"العلاقات الاجتماعية","q":"التسامح والقدرة على نسيان الأخطاء:","opts":["يسامح بسرعة ولا يحمل ضغينة","يصعب عليه النسيان ويناقش الموضوع","يعاتب بهدوء ويغفر إن شعر بالتقدير","يعتمد على حجم الخطأ"]},{"id":"t25","cat":"الحياة اليومية","q":"الرومانسية وإظهار الحب في الحياة اليومية:","opts":["رومانسي يحب الهدايا والمفاجآت دائماً","واقعي لكن أفعاله تثبت حبه","يعبر بحرارة ودون تكلف","رومانسي في المناسبات فقط"]},{"id":"t26","cat":"الحياة اليومية","q":"درجة التدين والالتزام الديني:","opts":["ملتزم جداً بالفرائض والسنن","معتدل ويحب الدين بيسر","متوافق مع مستواي في الالتزام","غير مهم في هذا الجانب"]},{"id":"t27","cat":"الحياة اليومية","q":"الصبر وطول البال مع الشريك:","opts":["صبور جداً ولا يستفز بسهولة","حازم وسريع في اتخاذ القرار","صبور في الصعب وحازم في وقت الحزم","يعتمد على الموقف"]},{"id":"t28","cat":"الحياة اليومية","q":"الذكاء وسرعة البديهة عند الشريك:","opts":["عبقري ويحب النقاشات العميقة","بسيط التفكير يركز على العملي","ذكي اجتماعياً وعاطفياً","المهم يفهميني"]},{"id":"t29","cat":"الحياة اليومية","q":"النظام والترتيب داخل المنزل:","opts":["مهووس بالنظام والنظافة","فوضوي قليلاً ولا يكترث","يشاركني التنظيم بأسلوب متفق عليه","المهم البيت مريح ونظيف"]},{"id":"t30","cat":"الحياة اليومية","q":"القناعة مقابل الطموح المادي:","opts":["قنوع جداً ويرضى بالقليل","متطلع دائماً للأفضل والثراء","يسعى للتطوير بعقلانية واتزان","المهم السعادة والراحة"]},{"id":"e1","cat":"جس النبض","q":"لو قالوا لك إنك لازم تقضي يوم كامل في مكان معزول مع شخص واحد من معارفك، مين تختار؟","opts":["صديقك المقرب","شخص تطمن وأنت معاه","أقعد لوحدي أحسن","أي حد والإنترنت والكهرباء"]},{"id":"e2","cat":"جس النبض","q":"لما تشوف رسالة من الطرف الآخر فجأة، إيه أول إحساس بيجيلك؟","opts":["فضول أعرف كاتب إيه","ابتسامة وتحسن في المود","بكسل أفتحها دلوقتي","إحساس عادي زي أي إشعار"]},{"id":"e3","cat":"جس النبض","q":"في رأيك، إيه الحاجة اللي بتخلي اتنين متوافقين على بعض جداً؟","opts":["تشابه الاهتمامات والهوايات","كيمياء وتفاهم من غير كلام","إن كل واحد يكمل نواقص التاني","إنهم ميتخانقوش كتير والموضوع نصيب"]},{"id":"e4","cat":"اللعب على الوتر العاطفي","q":"لو يومك كان سيء جداً وضغط الشغل عالي، إيه أكتر حاجة ممكن تهون عليك؟","opts":["أنام وأقفل الموبايل","أسمع صوت الطرف الآخر أو أشوفه","أخرج مع أصحابي أفصل","أكلة حلوة أو حلقة مسلسلي المفضل"]},{"id":"e5","cat":"اللعب على الوتر العاطفي","q":"هل بتؤمن إن الشخص ممكن يخطف قلب حد من غير ما يقصد، بمجرد تفاصيله العفوية؟","opts":["لأ، الحب محتاج وقت طويل","آه جداً، ودا حصل معايا فعلاً","على حسب الشخص والموقف","دي حاجات في الأفلام بس"]},{"id":"e6","cat":"اللعب على الوتر العاطفي","q":"إيه أكتر صفة في الطرف الآخر بتخليك تحس إنه شخص مميز ومختلف عن كل اللي حواليك؟","opts":["طريقة كلامه وطيبته","اهتمامه بي وتفاصيله اللي بتفهمني","جنونه وعفويته","إنه شخص مجتهد وناجح"]},{"id":"e7","cat":"الحصار الذكي","q":"لو بكرا الصبح اختفى الطرف الآخر فجأة من حياتك وما بقاش له أي أثر، إيه أول حاجة هتعملها؟","opts":["هقلق وأقلب الدنيا عليه لحد ما ألاقيه","هحس إن في جزء غالي ضاع مني","هفترض إنه مشغول وهيرجع","هبعت رسالة عادية أسأل عليه"]},{"id":"e8","cat":"الحصار الذكي","q":"علاقتكما الحالية وتوافقكما، تفتكر هي مجرد صداقة قوية ولا في مشاعر تانية أكبر بدأت تظهر؟","opts":["صداقة عزيزة جداً","مشاعر أكبر بكتير وساعات مستني الوقت المناسب","لسه مش قادر أحدد المسمى بس غالي عندي","لسه بنتعرف على بعض أكتر والوقت هيحدد"]},{"id":"e9","cat":"الحصار الذكي","q":"لما تكونون مع بعض أو بنتكلموا، هل تحس بضربات قلب سريعة ولا براحة وهدوء غريب؟","opts":["راحة وأمان كأني في بيتي","لخبطة وضربات قلب سريعة","إحساس طبيعي وعادي","بكون مركز في الموضوع اللي بنتكلم فيه"]},{"id":"e10","cat":"رصاصة الرحمة","q":"تخيل لو جاءك وقاللك 'أنا وقعت في حبك'.. هيكون إيه رد فعلك السريع؟","opts":["هقوله 'وأنا كمان كنت مستني الكلمة دي'","هتنح من الفرحة والصدمة","هضحك وهقوله كنت حاسس","هسكت شوية ممكن أغير الموضوع"]},{"id":"e11","cat":"رصاصة الرحمة","q":"بصراحة ومن غير لف ودوران.. الطرف الآخر بقى بالنسبالك إيه؟","opts":["الشخص اللي خطف قلبي وعقلي","حد مهم جداً ومقدرش أستغنى عنه","الإجابة محتاجة قعدة أقولها في العين","حد مريح ومبسوط بوجوده في حياتي"]},{"id":"f1","cat":"طباع وعادات العائلة 👥","q":"إذا تجمعنا في بيت العائلة يوم الإجازة، ما هو النشاط الأساسي المتوقع؟","opts":["نقاش عائلي حاد وعميق في السياسة أو أمور الحياة","جولة ضحك وتنكيت ومواقف مضحكة مستمرة","الأكل ثم الأكل ثم النوم الجماعي أمام التلفزيون","هدوء تام وكل شخص يمسك هاتفه الذكي"]},{"id":"f2","cat":"طباع وعادات العائلة 👥","q":"من هو الشخص في عائلتي الذي يعتبر وزير الخارجية صاحب العلاقات والقرارات والعزائم؟","opts":["الأب بكل تأكيد","الأم هي القائد الخفي","أحد الأخوة أو الأخوات الكبار","العائلة ديمقراطية جداً والكل يشارك"]},{"id":"f3","cat":"طباع وعادات العائلة 👥","q":"كيف تتعامل عائلتي مع المواعيد في المناسبات؟","opts":["نصل قبل الموعد بنصف ساعة دقة عسكرية","نصل على الموعد تماماً بالدقيقة","نتأخر ساعة على الأقل توقيت عائلي خاص","ننسى الموعد من الأساس ونعتذر في آخر لحظة"]},{"id":"f4","cat":"من هو الشخص الذي...؟ 🔍","q":"إذا وقعت في مشكلة كبيرة واحتجت نصيحة سريعة، من أول شخص من عائلتي سأتصل به؟","opts":["أمي","أبي","أخي أو أختي المقرب","لن أخبر أحداً وسأحاول حلها بنفسي"]},{"id":"f5","cat":"من هو الشخص الذي...؟ 🔍","q":"من هو فرد العائلة الأكثر عاطفة وحناناً والذي يسهل إقناعه أو كسب صفه دائماً؟","opts":["الأم","الأب رغم ملامحه الجادة","أختي الصغرى أو أخي الأصغر","الجد أو الجدة"]},{"id":"f6","cat":"من هو الشخص الذي...؟ 🔍","q":"من هو الشخص في عائلتي الذي يمتلك رادار النقد يلاحظ كل التفاصيل الصغيرة مثل الملابس والوزن وتسريحة الشعر؟","opts":["أمي الغالية","أختي الكبرى","خالاتي أو عماتي","لا أحد عائلتي لا تدقق في هذه التفاصيل"]},{"id":"f7","cat":"مواقف وخطط مستقبلية 🔮","q":"ما هي أكثر طبخة مشهورة بها عائلتي ونتميز بها في العزائم؟","opts":["المحاشي والمحشيات بأنواعها","الصواني في الفرن بشاميل ورقاق","المشويات والأكلات السريعة","الحلويات والمخبوزات"]},{"id":"f8","cat":"مواقف وخطط مستقبلية 🔮","q":"كيف تتوقع أن تكون علاقتك مع حماك أو حمتك مستقبلاً بناءً على ما عرفته؟","opts":["علاقة رسمية جداً ومليئة بالاحترام المتبادل والحدود","علاقة أصدقاء مقربين ودردشة مستمرة","علاقة اتقاء شر ومجاملات دبلوماسية خفيفة","علاقة ابن أو ابنة حقيقية مليئة بالدلال"]},{"id":"f9","cat":"مواقف وخطط مستقبلية 🔮","q":"في الأعياد والمناسبات الكبيرة، ما هو الطقس العائلي المقدس الذي لا يمكن تغييره؟","opts":["السفر خارج المدينة تماماً","الغداء الجماعي الإجباري في بيت العائلة الكبير","السهر حتى الفجر مع الأقارب والأبناء","توزيع العيديات والتقاط الصور التذكارية الرسمية"]},{"id":"p1","cat":"فلسفة الحياة وإدارة الضغوط","qm":"بعد يوم عمل شاق ومليء بالمشاكل، عدت إلى المنزل ووجدت أن زوجتك أيضاً عاشت يوماً سيئاً والمنزل في حالة فوضى كاملة. كيف ستتعامل مع هذا الموقف؟","qf":"بعد يوم عمل شاق ومليء بالمشاكل، عُدتِ إلى المنزل ووجدتِ أن زوجك أيضاً عاش يوماً سيئاً والمنزل في حالة فوضى كاملة. كيف ستتعاملين مع هذا الموقف؟","opts":["سننفجر في وجه بعضنا غالباً، لأن طاقة التحمل عند الطرفين صفر، ونحتاج لوقت حتى يهدأ الجو","سأضغط على نفسي وأحاول احتواء الطرف الآخر وتنظيف المكان بسرعة لأن راحته تهمني أكثر من تعبي","سنعترف لبعضنا فوراً: اليوم نحن خارج الخدمة، نطلب طعاماً جاهزاً، ونترك الفوضى ليوم غد، وننام مبكراً"]},{"id":"p2","cat":"فلسفة الحياة وإدارة الضغوط","qm":"إذا شعر أحدكما بالملل أو الروتين بعد سنة من الزواج، ما هي الخطوة التي تراها صحيحة لإنقاذ الموقف؟","qf":"إذا شعر أحدكما بالملل أو الروتين بعد سنة من الزواج، ما هي الخطوة التي ترينها صحيحة لإنقاذ الموقف؟","opts":["جلسة مكاشفة صريحة وجادة لمعرفة أسباب التقصير وتغيير نمط الحياة فوراً بشكل جذري","القيام بمفاجأة رومانسية لكسر الروتين بشكل عاطفي وسفر مفاجئ أو ليلة مختلفة","تقبل أن الملل جزء طبيعي من أي علاقة، ويكفي أن يمارس كل منا هواية جديدة أو نخرج معاً بشكل غير مخطط له"]},{"id":"p3","cat":"فلسفة الحياة وإدارة الضغوط","q":"كيف تنظر إلى مفهوم الأدوار داخل البيت فيما يخص الطبخ والتنظيف وإدارة الأمور؟","opts":["هناك أدوار تقليدية واضحة يجب ألا تتداخل إلا في الظروف القصوى","لا توجد أدوار نهائياً؛ كل شيء يجب أن يُقسم بالتساوي طوال الوقت","مرونة مطلقة حسب الظروف؛ من لديه وقت وطاقة أكبر يسد مكان الآخر"]},{"id":"p4","cat":"المال والطموح والأمان","q":"طرأت فرصة عمل ممتازة لأحدكما تتطلب السفر أو قضاء ساعات طويلة خارج المنزل، لكنها ستؤمن مستقبلاً مادياً كبيراً للعائلة. كيف تفكران في هذا؟","opts":["نرفضها فوراً؛ الاستقرار الأسري والوجود معاً يومياً أهم من أي مال أو طموح","نوافق فوراً؛ الفرص لا تتكرر، وعلى الطرف الآخر أن يتحمل من أجل المستقبل","نضع خطة زمنية مشروطة لتحقيق هدف مالي معين ثم نعود للوضع الطبيعي"]},{"id":"p5","cat":"المال والطموح والأمان","q":"إذا مررتم بضائقة مالية مفاجئة واضطررتم لتقليص المصاريف إلى النصف، ما هو أول شيء ستتخلى عنه؟","opts":["الرفاهيات الشخصية تماماً مع الحفاظ على مستوى معيشة البيت","سأتوتر جداً لأن المادة تشعرني بالأمان، وقد يؤثر هذا على تعاملي اليومي","سنجلس معاً لنعيد ترتيب الأولويات ونضع ميزانية طوارئ يلتزم بها الطرفان"]},{"id":"p6","cat":"الذكاء العاطفي","q":"عندما يُنتقد تصرف معين قمت به، ما هي أول ردة فعل تدور في عقلك بينك وبين نفسك؟","opts":["الدفاع عن النفس فوراً والشعور بأن الطرف الآخر يهاجم أو لا يقدر الجهد","لوم النفس والشعور بالحزن والرغبة في إرضاء الطرف الآخر بسرعة","فصل المشاعر عن الكلام؛ التفكير في النقد إن كان صحيحاً سيُغيّر، وإن كان مجرد اختلاف فسأشرح وجهة نظري بهدوء"]},{"id":"p7","cat":"الذكاء العاطفي","q":"ما هو تعريفك للاحترام المتبادل في أوقات الغضب الشديد؟","opts":["ألا يرتفع الصوت نهائياً، والالتزام بألفاظ رسمية ومهذبة مهما كان حجم الغضب","الاعتزال فوراً؛ ينفصل كل منا في غرفة ولا نتحدث حتى يزول الغضب تماماً","مسموح بالتعبير عن الغضب لكن الخط الأحمر هو الإهانة الشخصية أو التجريح أو إدخال الأهل في الموضوع"]}];
 
 function getTopic() {
   var names = [state.myUsername, state.partnerUsername].sort();
@@ -182,12 +175,17 @@ function getTopic() {
 }
 
 function adaptQuestion(q) {
-  var maleMap = {'{{زوج}}': 'زوجتك', '{{حبيب}}': 'حبيبتك', '{{شريك}}': 'شريكة حياتك', '{{الإنسان}}': 'الإنسانة التي تحبها'};
-  var femaleMap = {'{{زوج}}': 'زوجك', '{{حبيب}}': 'حبيبك', '{{شريك}}': 'شريك حياتك', '{{الإنسان}}': 'الإنسان الذي تحبه'};
-  var map = state.myGender === 'male' ? maleMap : femaleMap;
-  var qText = q.q;
-  for (var key in map) {
-    qText = qText.split(key).join(map[key]);
+  var maleMap = {'{{\u0632\u0648\u062C}}': '\u0632\u0648\u062C\u062A\u0643', '{{\u062D\u0628\u064A\u0628}}': '\u062D\u0628\u064A\u0628\u062A\u0643', '{{\u0634\u0631\u064A\u0643}}': '\u0634\u0631\u064A\u0643\u0629 \u062D\u064A\u0627\u062A\u0643', '{{\u0627\u0644\u0625\u0646\u0633\u0627\u0646}}': '\u0627\u0644\u0625\u0646\u0633\u0627\u0646\u0629 \u0627\u0644\u062A\u064A \u062A\u062D\u0628\u0647\u0627'};
+  var femaleMap = {'{{\u0632\u0648\u062C}}': '\u0632\u0648\u062C\u0643', '{{\u062D\u0628\u064A\u0628}}': '\u062D\u0628\u064A\u0628\u0643', '{{\u0634\u0631\u064A\u0643}}': '\u0634\u0631\u064A\u0643 \u062D\u064A\u0627\u062A\u0643', '{{\u0627\u0644\u0625\u0646\u0633\u0627\u0646}}': '\u0627\u0644\u0625\u0646\u0633\u0627\u0646 \u0627\u0644\u0630\u064A \u062A\u062D\u0628\u0647'};
+  var qText;
+  if (q.qm && q.qf) {
+    qText = state.myGender === 'male' ? q.qm : q.qf;
+  } else {
+    qText = q.q;
+    var map = state.myGender === 'male' ? maleMap : femaleMap;
+    for (var key in map) {
+      qText = qText.split(key).join(map[key]);
+    }
   }
   return { id: q.id, cat: q.cat, q: qText, opts: q.opts.slice() };
 }
@@ -199,12 +197,16 @@ var state = {
   myGender: '', partnerGender: '',
   sseConnection: null, connected: false, partnerOnline: false,
   gamePhase: 'login',
-  currentQ: null, myAnswer: -1, partnerAnswer: -1,
+  currentQ: null, currentQRaw: null,
+  myAnswer: -1, partnerAnswer: -1,
   iSubmitted: false, partnerSubmitted: false,
   chatMsgs: [], askedIds: [], questionNum: 0,
   score: { match: 0, total: 0 },
   chatInputFocused: false,
-  welcomeStep: 0
+  welcomeStep: 0,
+  questionRetryTimer: null,
+  iAmQuestionSender: false,
+  waitingForAck: false
 };
 
 /* ─── SSE / Messaging ─── */
@@ -261,12 +263,17 @@ function handleMessage(data) {
   } else if (data.type === 'game-decline') {
     if (state.gamePhase === 'waiting-accept') {
       state.gamePhase = 'lobby';
-      showToast('تم رفض الدعوة');
+      showToast('\u062A\u0645 \u0631\u0641\u0636 \u0627\u0644\u062F\u0639\u0648\u0629');
       renderLobby();
     }
   } else if (data.type === 'game-question') {
+    /* Cancel any pending retry */
+    if (state.questionRetryTimer) { clearTimeout(state.questionRetryTimer); state.questionRetryTimer = null; }
+    state.waitingForAck = false;
+    state.iAmQuestionSender = false;
     var aq = adaptQuestion(data.question);
     state.currentQ = aq;
+    state.currentQRaw = data.question;
     state.questionNum = data.questionNum || 1;
     state.myAnswer = -1;
     state.partnerAnswer = -1;
@@ -275,6 +282,14 @@ function handleMessage(data) {
     state.chatMsgs = [];
     state.gamePhase = 'answering';
     renderGame();
+    /* Send ack so the sender knows we got it */
+    sendMsg({ type: 'game-question-ack', questionId: data.question ? data.question.id : '' });
+  } else if (data.type === 'game-question-ack') {
+    /* Partner received the question, stop retrying */
+    if (state.waitingForAck) {
+      state.waitingForAck = false;
+      if (state.questionRetryTimer) { clearTimeout(state.questionRetryTimer); state.questionRetryTimer = null; }
+    }
   } else if (data.type === 'game-answer') {
     if (state.gamePhase === 'answering' || state.gamePhase === 'waiting-partner') {
       state.partnerAnswer = data.answer;
@@ -282,15 +297,24 @@ function handleMessage(data) {
       if (state.iSubmitted && state.gamePhase === 'waiting-partner') {
         showReveal();
       } else if (state.gamePhase === 'answering') {
-        renderGame();
+        /* Don't re-render entire game! Just update the waiting status */
+        updateWaitingStatus();
       }
     }
   } else if (data.type === 'game-chat') {
-    state.chatMsgs.push({ name: data.displayName, content: data.content, ts: data.ts, isMe: false });
-    appendChatMsg({ name: data.displayName, content: data.content, ts: data.ts, isMe: false });
+    var chatMsg = { name: data.displayName, content: data.content, ts: data.ts, isMe: false };
+    state.chatMsgs.push(chatMsg);
+    appendChatMsg(chatMsg);
   } else if (data.type === 'game-end') {
+    if (state.questionRetryTimer) { clearTimeout(state.questionRetryTimer); state.questionRetryTimer = null; }
     state.gamePhase = 'summary';
     renderSummary();
+  } else if (data.type === 'game-leave') {
+    if (state.questionRetryTimer) { clearTimeout(state.questionRetryTimer); state.questionRetryTimer = null; }
+    state.gamePhase = 'lobby';
+    state.currentQ = null;
+    showToast(state.partnerDisplayName + ' \u063A\u0627\u062F\u0631 \u0627\u0644\u0644\u0639\u0628\u0629');
+    renderLobby();
   }
 }
 
@@ -298,11 +322,11 @@ function handleMessage(data) {
 function renderLogin() {
   clearApp();
   var app = document.getElementById('app');
-  var input = h('input', { type: 'text', placeholder: 'أدخل اسم المستخدم', id: 'loginInput', autocomplete: 'off' });
-  var btn = h('button', { class: 'btn btn-primary', style: 'width:100%', onClick: function() { doLogin(); } }, 'دخول');
+  var input = h('input', { type: 'text', placeholder: '\u0623\u062F\u062E\u0644 \u0627\u0633\u0645 \u0627\u0644\u0645\u0633\u062A\u062E\u062F\u0645', id: 'loginInput', autocomplete: 'off' });
+  var btn = h('button', { class: 'btn btn-primary', style: 'width:100%', onClick: function() { doLogin(); } }, '\u062F\u062E\u0648\u0644');
   var card = h('div', { class: 'login-card' }, [
-    h('h1', {}, 'حبّان'),
-    h('p', {}, 'لعبة التوافق بين الأزواج'),
+    h('h1', {}, '\u062D\u0628\u0651\u0627\u0646'),
+    h('p', {}, '\u0644\u0639\u0628\u0629 \u0627\u0644\u062A\u0648\u0627\u0641\u0642 \u0628\u064A\u0646 \u0627\u0644\u0623\u0632\u0648\u0627\u062C'),
     input,
     btn
   ]);
@@ -316,7 +340,7 @@ function renderLogin() {
 
 function doLogin() {
   var val = document.getElementById('loginInput').value.trim().toLowerCase();
-  if (!USERS[val]) { showToast('اسم المستخدم غير صحيح'); return; }
+  if (!USERS[val]) { showToast('\u0627\u0633\u0645 \u0627\u0644\u0645\u0633\u062A\u062E\u062F\u0645 \u063A\u064A\u0631 \u0635\u062D\u064A\u062D'); return; }
   var u = USERS[val];
   state.myUsername = val;
   state.partnerUsername = u.partner;
@@ -334,7 +358,7 @@ function renderConnecting() {
   clearApp();
   var app = document.getElementById('app');
   var screen = h('div', { class: 'screen', id: 'connectingScreen', style: 'background:var(--bg)' }, [
-    h('div', { class: 'connecting-text' }, 'جاري الاتصال...')
+    h('div', { class: 'connecting-text' }, '\u062C\u0627\u0631\u064A \u0627\u0644\u0627\u062A\u0635\u0627\u0644...')
   ]);
   app.appendChild(screen);
   setTimeout(function() {
@@ -356,8 +380,8 @@ function renderWelcome1() {
   state.gamePhase = 'welcome';
   clearApp();
   var app = document.getElementById('app');
-  var text = h('div', { class: 'welcome-text' }, 'أهلا وسهلا سكينة \u2764\uFE0F مرحبا بك في مساحتنا الخاصة لتقوية التعارف بيننا');
-  var btn = h('button', { class: 'btn btn-primary', style: 'margin-top:32px', onClick: function() { renderWelcome2(); } }, 'نعم');
+  var text = h('div', { class: 'welcome-text' }, '\u0623\u0647\u0644\u0627 \u0648\u0633\u0647\u0644\u0627 \u0633\u0643\u064A\u0646\u0629 \u2764\uFE0F \u0645\u0631\u062D\u0628\u0627 \u0628\u0643 \u0641\u064A \u0645\u0633\u0627\u062D\u062A\u0646\u0627 \u0627\u0644\u062E\u0627\u0635\u0629 \u0644\u062A\u0642\u0648\u064A\u0629 \u0627\u0644\u062A\u0639\u0627\u0631\u0641 \u0628\u064A\u0646\u0646\u0627');
+  var btn = h('button', { class: 'btn btn-primary', style: 'margin-top:32px', onClick: function() { renderWelcome2(); } }, '\u0646\u0639\u0645');
   var screen = h('div', { class: 'screen', id: 'welcomeScreen' }, [text, btn]);
   app.appendChild(screen);
 }
@@ -366,18 +390,17 @@ function renderWelcome2() {
   state.welcomeStep = 2;
   clearApp();
   var app = document.getElementById('app');
-  var flowers = ['🌹','🌷','🌸','🌺','🌻','💐','🏵️','🏵️','🌹'];
+  var flowers = ['\uD83C\uDF39','\uD83C\uDF37','\uD83C\uDF38','\uD83C\uDF3A','\uD83C\uDF3B','\uD83D\uDC90','\uD83C\uDFF7\uFE0F','\uD83C\uDFF7\uFE0F','\uD83C\uDF39'];
   var gridItems = [];
   for (var i = 0; i < flowers.length; i++) {
     gridItems.push(h('div', { class: 'flower-item' }, flowers[i]));
   }
   var grid = h('div', { class: 'flower-grid' }, gridItems);
-  var title = h('div', { class: 'welcome-text', style: 'font-size:20px;margin-bottom:8px' }, '🌸 هذه الورود هدية لك 🌸');
-  var btn = h('button', { class: 'btn btn-primary', style: 'margin-top:20px', onClick: function() { state.welcomeStep = 0; state.gamePhase = 'lobby'; renderLobby(); } }, 'شكراً 🌸');
+  var title = h('div', { class: 'welcome-text', style: 'font-size:20px;margin-bottom:8px' }, '\uD83C\uDF38 \u0647\u0630\u0647 \u0627\u0644\u0648\u0631\u0648\u062F \u0647\u062F\u064A\u0629 \u0644\u0643 \uD83C\uDF38');
+  var btn = h('button', { class: 'btn btn-primary', style: 'margin-top:20px', onClick: function() { state.welcomeStep = 0; state.gamePhase = 'lobby'; renderLobby(); } }, '\u0634\u0643\u0631\u0627\u064B \uD83C\uDF38');
   var screen = h('div', { class: 'screen', id: 'flowersScreen' }, [title, grid, btn]);
   app.appendChild(screen);
-  /* Add floating petals */
-  var petals = ['🌸','🌺','🌷','💐','✿','❀'];
+  var petals = ['\uD83C\uDF38','\uD83C\uDF3A','\uD83C\uDF37','\uD83D\uDC90','\u273F','\u2740'];
   for (var p = 0; p < 12; p++) {
     var petal = h('div', { class: 'floating-petal' }, petals[p % petals.length]);
     petal.style.left = (Math.random() * 100) + '%';
@@ -394,22 +417,22 @@ function renderLobby() {
   clearApp();
   var app = document.getElementById('app');
   var onlineDot = state.partnerOnline ? 'online' : 'offline';
-  var onlineText = state.partnerOnline ? 'متصل الآن' : 'غير متصل';
+  var onlineText = state.partnerOnline ? '\u0645\u062A\u0635\u0644 \u0627\u0644\u0622\u0646' : '\u063A\u064A\u0631 \u0645\u062A\u0635\u0644';
   var playBtn = h('button', {
     class: 'btn btn-primary',
     style: 'width:100%;margin-top:20px;font-size:18px;padding:14px',
     disabled: !state.partnerOnline,
     onClick: function() { startGame(); }
-  }, 'ابدأ اللعب 🎮');
+  }, '\u0627\u0628\u062F\u0623 \u0627\u0644\u0644\u0639\u0628 \uD83C\uDFAE');
   var card = h('div', { class: 'lobby-card' }, [
-    h('h2', {}, 'حبّان'),
+    h('h2', {}, '\u062D\u0628\u0651\u0627\u0646'),
     h('div', { class: 'partner-name' }, state.partnerDisplayName),
     h('div', {}, [
       h('span', { class: 'status-dot ' + onlineDot }),
       h('span', { style: 'color:var(--text2);font-size:14px' }, onlineText)
     ]),
     playBtn,
-    h('div', { class: 'conn-status', id: 'connStatus' }, state.connected ? 'متصل بالخادم ✅' : 'جاري الاتصال...')
+    h('div', { class: 'conn-status', id: 'connStatus' }, state.connected ? '\u0645\u062A\u0635\u0644 \u0628\u0627\u0644\u062E\u0627\u062F\u0645 \u2705' : '\u062C\u0627\u0631\u064A \u0627\u0644\u0627\u062A\u0635\u0627\u0644...')
   ]);
   var screen = h('div', { class: 'screen', id: 'lobbyScreen' }, [card]);
   app.appendChild(screen);
@@ -422,13 +445,13 @@ function updatePartnerStatus() {
 
 function updateConnStatus() {
   var el = document.getElementById('connStatus');
-  if (el) el.textContent = state.connected ? 'متصل بالخادم ✅' : 'جاري الاتصال...';
+  if (el) el.textContent = state.connected ? '\u0645\u062A\u0635\u0644 \u0628\u0627\u0644\u062E\u0627\u062F\u0645 \u2705' : '\u062C\u0627\u0631\u064A \u0627\u0644\u0627\u062A\u0635\u0627\u0644...';
 }
 
 function startGame() {
   state.gamePhase = 'waiting-accept';
   sendMsg({ type: 'game-invite', displayName: state.myDisplayName });
-  showToast('تم إرسال الدعوة لـ' + state.partnerDisplayName);
+  showToast('\u062A\u0645 \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u062F\u0639\u0648\u0629 \u0644\u0640' + state.partnerDisplayName);
   renderWaitingAccept();
 }
 
@@ -436,7 +459,7 @@ function renderWaitingAccept() {
   clearApp();
   var app = document.getElementById('app');
   var screen = h('div', { class: 'screen', style: 'background:var(--bg)' }, [
-    h('div', { class: 'connecting-text' }, 'في انتظار ' + state.partnerDisplayName + '...')
+    h('div', { class: 'connecting-text' }, '\u0641\u064A \u0627\u0646\u062A\u0638\u0627\u0631 ' + state.partnerDisplayName + '...')
   ]);
   app.appendChild(screen);
 }
@@ -446,11 +469,11 @@ function showInvitePopup(name) {
   if (existing) existing.remove();
   var popup = h('div', { class: 'invite-popup' }, [
     h('div', { class: 'invite-card' }, [
-      h('h3', {}, 'دعوة للعب!'),
-      h('p', {}, name + ' يدعوك للعب'),
+      h('h3', {}, '\u062F\u0639\u0648\u0629 \u0644\u0644\u0639\u0628!'),
+      h('p', {}, name + ' \u064A\u062F\u0639\u0648\u0643 \u0644\u0644\u0639\u0628'),
       h('div', { class: 'invite-btns' }, [
-        h('button', { class: 'btn btn-primary', onClick: function() { popup.remove(); acceptInvite(); } }, 'قبول ❤️'),
-        h('button', { class: 'btn btn-outline', onClick: function() { popup.remove(); declineInvite(); } }, 'رفض')
+        h('button', { class: 'btn btn-primary', onClick: function() { popup.remove(); acceptInvite(); } }, '\u0642\u0628\u0648\u0644 \u2764\uFE0F'),
+        h('button', { class: 'btn btn-outline', onClick: function() { popup.remove(); declineInvite(); } }, '\u0631\u0641\u0636')
       ])
     ])
   ]);
@@ -460,12 +483,12 @@ function showInvitePopup(name) {
 function acceptInvite() {
   state.gamePhase = 'answering';
   sendMsg({ type: 'game-accept' });
-  showToast('تم قبول الدعوة');
+  showToast('\u062A\u0645 \u0642\u0628\u0648\u0644 \u0627\u0644\u062F\u0639\u0648\u0629');
 }
 
 function declineInvite() {
   sendMsg({ type: 'game-decline' });
-  showToast('تم رفض الدعوة');
+  showToast('\u062A\u0645 \u0631\u0641\u0636 \u0627\u0644\u062F\u0639\u0648\u0629');
 }
 
 /* ─── Game ─── */
@@ -483,12 +506,35 @@ function sendNextQuestion() {
   state.questionNum++;
   var aq = adaptQuestion(q);
   state.currentQ = aq;
+  state.currentQRaw = q;
   state.myAnswer = -1;
   state.partnerAnswer = -1;
   state.iSubmitted = false;
   state.partnerSubmitted = false;
   state.chatMsgs = [];
-  sendMsg({ type: 'game-question', question: q, questionNum: state.questionNum });
+  state.iAmQuestionSender = true;
+  state.waitingForAck = true;
+
+  /* Send question with retry mechanism */
+  function sendQuestionMsg() {
+    sendMsg({ type: 'game-question', question: q, questionNum: state.questionNum });
+  }
+  sendQuestionMsg();
+
+  /* If no ack received within 4 seconds, retry up to 3 times */
+  var retryCount = 0;
+  function retryLoop() {
+    if (!state.waitingForAck || retryCount >= 3) {
+      state.waitingForAck = false;
+      return;
+    }
+    retryCount++;
+    sendQuestionMsg();
+    state.questionRetryTimer = setTimeout(retryLoop, 4000);
+  }
+  state.questionRetryTimer = setTimeout(retryLoop, 4000);
+
+  state.gamePhase = 'answering';
   renderGame();
 }
 
@@ -502,33 +548,42 @@ function renderGame() {
   }
 }
 
+function buildGameHeader() {
+  return h('div', { class: 'game-header' }, [
+    h('span', { class: 'q-num' }, '\u0627\u0644\u0633\u0624\u0627\u0644 ' + state.questionNum),
+    h('span', { class: 'q-cat' }, state.currentQ ? state.currentQ.cat : ''),
+    h('button', { class: 'leave-btn', onClick: function() { leaveGame(); } }, '\u0645\u063A\u0627\u062F\u0631\u0629 \u270B')
+  ]);
+}
+
 function renderAnswering(app) {
   var q = state.currentQ;
   if (!q) return;
-  var header = h('div', { class: 'game-header' }, [
-    h('span', { class: 'q-num' }, 'السؤال ' + state.questionNum),
-    h('span', { class: 'q-cat' }, q.cat)
-  ]);
+  var header = buildGameHeader();
   var qText = h('div', { class: 'question-text' }, q.q);
-  var letters = ['أ','ب','ج','د'];
+  var letters = ['\u0623','\u0628','\u062C','\u062F'];
   var optBtns = [];
   for (var i = 0; i < q.opts.length; i++) {
     var isSelected = (state.myAnswer === i);
+    var isDisabled = state.iSubmitted;
     optBtns.push(h('button', {
       class: 'option-btn' + (isSelected ? ' selected' : ''),
+      disabled: isDisabled,
+      'data-idx': String(i),
       onClick: (function(idx) { return function() { selectAnswer(idx); }; })(i)
     }, [
       h('span', { class: 'opt-letter' }, letters[i]),
       h('span', {}, q.opts[i])
     ]));
   }
-  var optsDiv = h('div', { class: 'options-grid' }, optBtns);
+  var optsDiv = h('div', { class: 'options-grid', id: 'optionsGrid' }, optBtns);
   var confirmBtn = h('button', {
     class: 'btn btn-primary',
+    id: 'confirmBtn',
     style: 'width:100%;margin-top:12px',
     disabled: state.myAnswer === -1 || state.iSubmitted,
     onClick: function() { submitAnswer(); }
-  }, state.iSubmitted ? 'تم التسليم ✅' : 'تأكيد الإجابة');
+  }, state.iSubmitted ? '\u062A\u0645 \u0627\u0644\u062A\u0633\u0644\u064A\u0645 \u2705' : '\u062A\u0623\u0643\u064A\u062F \u0627\u0644\u0625\u062C\u0627\u0628\u0629');
   var bodyContent = [qText, optsDiv, confirmBtn];
   if (state.iSubmitted) {
     bodyContent.push(buildWaitingStatus());
@@ -539,11 +594,24 @@ function renderAnswering(app) {
   app.appendChild(screen);
 }
 
+function updateWaitingStatus() {
+  /* Only update the waiting status area, don't re-render the whole game */
+  var existing = document.querySelector('.waiting-card');
+  if (existing) existing.remove();
+  var confirmBtn = document.getElementById('confirmBtn');
+  if (!confirmBtn) return;
+  if (state.iSubmitted) {
+    confirmBtn.parentNode.insertBefore(buildWaitingStatus(), confirmBtn.nextSibling);
+    confirmBtn.textContent = '\u062A\u0645 \u0627\u0644\u062A\u0633\u0644\u064A\u0645 \u2705';
+    confirmBtn.disabled = true;
+  }
+}
+
 function buildWaitingStatus() {
-  var myIcon = state.iSubmitted ? '✅' : '⏳';
-  var partnerIcon = state.partnerSubmitted ? '✅' : '⏳';
+  var myIcon = state.iSubmitted ? '\u2705' : '\u23F3';
+  var partnerIcon = state.partnerSubmitted ? '\u2705' : '\u23F3';
   return h('div', { class: 'waiting-card', style: 'padding:20px 0' }, [
-    h('p', { style: 'font-size:16px;color:var(--text)' }, 'تم تسليم إجابتك'),
+    h('p', { style: 'font-size:16px;color:var(--text)' }, '\u062A\u0645 \u062A\u0633\u0644\u064A\u0645 \u0625\u062C\u0627\u0628\u062A\u0643'),
     h('div', { class: 'waiting-status' }, [
       h('div', { class: 'ws-item' }, [h('div', { class: 'ws-icon' }, myIcon), h('div', { class: 'ws-label' }, state.myDisplayName)]),
       h('div', { class: 'ws-item' }, [h('div', { class: 'ws-icon' }, partnerIcon), h('div', { class: 'ws-label' }, state.partnerDisplayName)])
@@ -551,10 +619,23 @@ function buildWaitingStatus() {
   ]);
 }
 
+/* FIX: selectAnswer now updates DOM directly instead of re-rendering */
 function selectAnswer(idx) {
   if (state.iSubmitted) return;
   state.myAnswer = idx;
-  renderGame();
+  /* Update button styles directly without re-rendering */
+  var btns = document.querySelectorAll('.option-btn');
+  for (var i = 0; i < btns.length; i++) {
+    var bIdx = parseInt(btns[i].getAttribute('data-idx'));
+    if (bIdx === idx) {
+      btns[i].classList.add('selected');
+    } else {
+      btns[i].classList.remove('selected');
+    }
+  }
+  /* Enable confirm button */
+  var confirmBtn = document.getElementById('confirmBtn');
+  if (confirmBtn) confirmBtn.disabled = false;
 }
 
 function submitAnswer() {
@@ -565,8 +646,25 @@ function submitAnswer() {
     showReveal();
   } else {
     state.gamePhase = 'waiting-partner';
-    renderGame();
+    /* Don't re-render! Just update the confirm button and show waiting status */
+    var confirmBtn = document.getElementById('confirmBtn');
+    if (confirmBtn) {
+      confirmBtn.textContent = '\u062A\u0645 \u0627\u0644\u062A\u0633\u0644\u064A\u0645 \u2705';
+      confirmBtn.disabled = true;
+    }
+    updateWaitingStatus();
   }
+}
+
+function leaveGame() {
+  if (state.questionRetryTimer) { clearTimeout(state.questionRetryTimer); state.questionRetryTimer = null; }
+  state.waitingForAck = false;
+  state.iAmQuestionSender = false;
+  state.gamePhase = 'lobby';
+  state.currentQ = null;
+  state.currentQRaw = null;
+  sendMsg({ type: 'game-leave' });
+  renderLobby();
 }
 
 /* ─── Reveal ─── */
@@ -585,37 +683,36 @@ function renderRevealScreen(app) {
   if (!q) return;
   var isMatch = state.myAnswer === state.partnerAnswer;
   var matchClass = isMatch ? 'matched' : 'differed';
-  var matchText = isMatch ? '✅ توافق!' : '❌ اختلاف في الرأي';
+  var matchText = isMatch ? '\u2705 \u062A\u0648\u0627\u0641\u0642!' : '\u274C \u0627\u062E\u062A\u0644\u0627\u0641 \u0641\u064A \u0627\u0644\u0631\u0623\u064A';
   var pct = Math.round(((state.score.match / state.score.total) * 100));
-  var header = h('div', { class: 'game-header' }, [
-    h('span', { class: 'q-num' }, 'السؤال ' + state.questionNum),
-    h('span', { class: 'q-cat' }, q.cat)
-  ]);
+  var header = buildGameHeader();
   var qText = h('div', { class: 'question-text', style: 'font-size:16px;margin-bottom:12px' }, q.q);
   var matchInd = h('div', { class: 'match-indicator ' + matchClass }, [matchText, h('span', { style: 'font-size:13px;opacity:.8;margin-right:8px' }, pct + '%')]);
-  var myAnsText = (state.myAnswer >= 0 && state.myAnswer < q.opts.length) ? q.opts[state.myAnswer] : '—';
-  var partnerAnsText = (state.partnerAnswer >= 0 && state.partnerAnswer < q.opts.length) ? q.opts[state.partnerAnswer] : '—';
+  var myAnsText = (state.myAnswer >= 0 && state.myAnswer < q.opts.length) ? q.opts[state.myAnswer] : '\u2014';
+  var partnerAnsText = (state.partnerAnswer >= 0 && state.partnerAnswer < q.opts.length) ? q.opts[state.partnerAnswer] : '\u2014';
   var revealRows = h('div', { class: 'reveal-row' }, [
     h('div', { class: 'reveal-col me-col' }, [h('div', { class: 'who' }, state.myDisplayName), h('div', { class: 'ans' }, myAnsText)]),
     h('div', { class: 'reveal-col partner-col' }, [h('div', { class: 'who' }, state.partnerDisplayName), h('div', { class: 'ans' }, partnerAnsText)])
   ]);
   var revealCard = h('div', { class: 'reveal-card' }, [revealRows]);
   /* Chat section */
-  var chatTitle = h('h4', {}, '💬 محادثة حول الإجابة');
+  var chatTitle = h('h4', {}, '\uD83D\uDCAC \u0645\u062D\u0627\u062F\u062B\u0629 \u062D\u0648\u0644 \u0627\u0644\u0625\u062C\u0627\u0628\u0629');
   var chatMsgsDiv = h('div', { id: 'gameChatMsgs' });
   for (var ci = 0; ci < state.chatMsgs.length; ci++) {
     chatMsgsDiv.appendChild(buildChatBubble(state.chatMsgs[ci]));
   }
-  var chatInput = h('input', { type: 'text', id: 'chatInput', placeholder: 'اكتب رسالة...', style: 'flex:1;padding:10px 14px;border-radius:20px;border:1px solid var(--border);background:#1a1a1a;color:var(--text);font-size:14px;outline:none;font-family:inherit' });
-  var emojiBtn = h('button', { id: 'emojiBtn', style: 'width:38px;height:38px;border-radius:50%;border:none;background:var(--rose);color:#fff;font-size:18px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center', onClick: function() { toggleEmojiPicker(); } }, '😊');
-  var inputBar = h('div', { class: 'chat-input-bar' }, [chatInput, emojiBtn]);
+  var chatInput = h('input', { type: 'text', id: 'chatInput', placeholder: '\u0627\u0643\u062A\u0628 \u0631\u0633\u0627\u0644\u0629...', style: 'flex:1;padding:10px 14px;border-radius:20px;border:1px solid var(--border);background:#1a1a1a;color:var(--text);font-size:14px;outline:none;font-family:inherit' });
+  var emojiBtn = h('button', { id: 'emojiBtn', style: 'width:38px;height:38px;border-radius:50%;border:none;background:var(--rose);color:#fff;font-size:18px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center', onClick: function() { toggleEmojiPicker(); } }, '\uD83D\uDE0A');
+  /* FIX: Added send button */
+  var sendBtn = h('button', { id: 'chatSendBtn', class: 'chat-send-btn', onClick: function() { sendChatMsg(); } }, '\u27A4');
+  var inputBar = h('div', { class: 'chat-input-bar' }, [chatInput, emojiBtn, sendBtn]);
   var emojiPicker = buildEmojiPicker();
   var chatSection = h('div', { class: 'chat-section', style: 'position:relative' }, [chatTitle, chatMsgsDiv, emojiPicker, inputBar]);
   var nextBtn = h('button', {
     class: 'btn btn-primary',
     style: 'width:100%;padding:14px;font-size:16px',
     onClick: function() { sendNextQuestion(); }
-  }, 'السؤال التالي →');
+  }, '\u0627\u0644\u0633\u0624\u0627\u0644 \u0627\u0644\u062A\u0627\u0644\u064A \u2192');
   var footer = h('div', { class: 'game-footer' }, [nextBtn]);
   var body = h('div', { class: 'game-body' }, [qText, matchInd, revealCard, chatSection]);
   var screen = h('div', { class: 'screen', id: 'gameScreen', style: 'justify-content:flex-start;padding:0' }, [header, body, footer]);
@@ -666,12 +763,12 @@ function formatTime(ts) {
 /* ─── Emoji Picker ─── */
 function buildEmojiPicker() {
   var cats = [
-    { name: 'قلوب', emojis: ['❤️','💕','💖','💗','💓','💞','💘','💝','💟','♥️','🫶','🥰','😍','🤩','😘','😗','😙','😚','🥺','😍'] },
-    { name: 'وجوه', emojis: ['😊','😄','😃','😁','😆','😅','🤣','😂','🙂','😉','😌','😜','🤪','😝','🤑','🤗','🤭','🫣','🤔','😐'] },
-    { name: 'إيماءات', emojis: ['👍','👎','👏','🙌','🤝','💪','✌️','🤞','🫶','🙏','🤲','💅','💅','👆','👇','👈','👉','🫂','🤫','🤭'] },
-    { name: 'طبيعة', emojis: ['🌸','🌹','🌷','🌺','🌻','💐','🌺','🍀','🌟','⭐','✨','🌙','☀️','🌈','🦋','🌺','🌻','🌸','💐','🌷'] },
-    { name: 'رومانسية', emojis: ['💑','👩‍❤️‍👨','💑','💍','💒','🥂','🍷','🎁','💌','🎵','🎶','💕','❤️‍🔥','🫶','💗','💘','💝','💘','💞','🥰'] },
-    { name: 'طعام', emojis: ['🍕','🍔','🍟','🌮','🍦','🧁','🍰','🍩','🍫','🍎','🍓','🫐','🍒','🥝','🍇','🍉','🍋','🫒','☕','🧋'] }
+    { name: '\u0642\u0644\u0648\u0628', emojis: ['\u2764\uFE0F','\uD83D\uDC95','\uD83D\uDC96','\uD83D\uDC97','\uD83D\uDC93','\uD83D\uDE18','\uD83D\uDC98','\uD83D\uDC9D','\uD83D\uDC9F','\u2665\uFE0F','\uD83E\uDEB6','\uD83E\uDD70','\uD83D\uDE0D','\uD83E\uDE29','\uD83D\uDE18','\uD83D\uDE17','\uD83D\uDE19','\uD83D\uDE1A','\uD83E\uDD7A','\uD83D\uDE0D'] },
+    { name: '\u0648\u062C\u0648\u0647', emojis: ['\uD83D\uDE0A','\uD83D\uDE04','\uD83C\uDF03','\uD83D\uDE01','\uD83D\uDE06','\uD83D\uDE05','\uD83E\uDD23','\uD83D\uDE02','\uD83D\uDE42','\uD83D\uDE09','\uD83D\uDE0C','\uD83D\uDE1C','\uD83E\uDD2A','\uD83D\uDE1D','\uD83E\uDD11','\uD83D\uDE17','\uD83E\uDD2E','\uD83E\uDD2D','\uD83D\uDE14','\uD83D\uDE10'] },
+    { name: '\u0625\u064A\u0645\u0627\u0621\u0627\u062A', emojis: ['\uD83D\uDC4D','\uD83D\uDC4E','\uD83D\uDC4F','\uD83D\uDE4C','\uD83E\uDD1D','\uD83D\uDCAA','\u270C\uFE0F','\uD83E\uDD1E','\uD83E\uDEB6','\uD83D\uDE4F','\uD83E\uDD32','\uD83D\uDC85','\uD83D\uDC85','\u261D\uFE0F','\uD83D\uDC47','\uD83D\uDC48','\uD83D\uDC49','\uD83E\uDD1B','\uD83E\uDD2B','\uD83E\uDD2E'] },
+    { name: '\u0637\u0628\u064A\u0639\u0629', emojis: ['\uD83C\uDF38','\uD83C\uDF39','\uD83C\uDF37','\uD83C\uDF3A','\uD83C\uDF3B','\uD83D\uDC90','\uD83C\uDF3A','\uD83C\uDF40','\uD83C\uDF1F','\u2B50','\u2728','\uD83C\uDF19','\u2600\uFE0F','\uD83C\uDF08','\uD83E\uDD8B','\uD83C\uDF3A','\uD83C\uDF3B','\uD83C\uDF38','\uD83D\uDC90','\uD83C\uDF37'] },
+    { name: '\u0631\u0648\u0645\u0627\u0646\u0633\u064A\u0629', emojis: ['\uD83D\uDC6D','\uD83D\uDC69\u200D\u2764\uFE0F\u200D\uD83D\uDC68','\uD83D\uDC6D','\uD83D\uDC8D','\uD83D\uDC92','\uD83E\uDD42','\uD83C\uDF77','\uD83C\uDF78','\uD83C\uDF81','\uD83D\uDC8C','\uD83C\uDFB5','\uD83C\uDFB6','\uD83D\uDC95','\u2764\uFE0F\u200D\uD83D\uDD25','\uD83E\uDEB6','\uD83D\uDC97','\uD83D\uDC98','\uD83D\uDC98','\uD83D\uDE18','\uD83E\uDD70'] },
+    { name: '\u0637\u0639\u0627\u0645', emojis: ['\uD83C\uDF55','\uD83C\uDF54','\uD83C\uDF5F','\uD83C\uDF2E','\uD83C\uDF66','\uD83E\uDDC1','\uD83C\uDF70','\uD83C\uDF69','\uD83C\uDF6B','\uD83C\uDF4E','\uD83C\uDF53','\uD83E\uDED0','\uD83C\uDF52','\uD83E\uDD5D','\uD83C\uDF47','\uD83C\uDF49','\uD83C\uDF4B','\uD83E\uDED2','\u2615','\uD83E\uDDCB'] }
   ];
   var catDivs = [];
   for (var i = 0; i < cats.length; i++) {
@@ -725,19 +822,19 @@ function renderSummary() {
   var differed = total - matched;
   var pct = total > 0 ? Math.round((matched / total) * 100) : 0;
   var msg = '';
-  if (pct === 100) msg = 'توافق مذهل! قلباكما ينبضان بإيقاع واحد ❤️';
-  else if (pct >= 80) msg = 'توافق رائع! أنتما شريكان متفاهمان جدًا';
-  else if (pct >= 60) msg = 'توافق جميل! حافظا على هذا الحب';
-  else if (pct >= 40) msg = 'توافق جيد! الاختلاف يزيد الحب عمقاً';
-  else msg = 'الاختلافات جزء من الحب! 😊';
-  var header = h('div', { class: 'game-header' }, [h('span', { style: 'font-size:16px;font-weight:bold' }, 'النتيجة النهائية')]);
+  if (pct === 100) msg = '\u062A\u0648\u0627\u0641\u0642 \u0645\u0630\u0647\u0644! \u0642\u0644\u0628\u0627\u0643\u0645\u0627 \u064A\u0646\u0628\u0636\u0627\u0646 \u0628\u0625\u064A\u0642\u0627\u0639 \u0648\u0627\u062D\u062F \u2764\uFE0F';
+  else if (pct >= 80) msg = '\u062A\u0648\u0627\u0641\u0642 \u0631\u0627\u0626\u0639! \u0623\u0646\u062A\u0645\u0627 \u0634\u0631\u064A\u0643\u0627\u0646 \u0645\u062A\u0641\u0627\u0647\u0645\u0627\u0646 \u062C\u062F\u0627\u064B';
+  else if (pct >= 60) msg = '\u062A\u0648\u0627\u0641\u0642 \u062C\u0645\u064A\u0644! \u062D\u0627\u0641\u0638\u0627 \u0639\u0644\u0649 \u0647\u0630\u0627 \u0627\u0644\u062D\u0628';
+  else if (pct >= 40) msg = '\u062A\u0648\u0627\u0641\u0642 \u062C\u064A\u062F! \u0627\u0644\u0627\u062E\u062A\u0644\u0627\u0641 \u064A\u0632\u064A\u062F \u0627\u0644\u062D\u0628 \u0639\u0645\u0642\u0627\u064B';
+  else msg = '\u0627\u0644\u0627\u062E\u062A\u0644\u0627\u0641\u0627\u062A \u062C\u0632\u0621 \u0645\u0646 \u0627\u0644\u062D\u0628! \uD83D\uDE0A';
+  var header = h('div', { class: 'game-header' }, [h('span', { style: 'font-size:16px;font-weight:bold' }, '\u0627\u0644\u0646\u062A\u064A\u062C\u0629 \u0627\u0644\u0646\u0647\u0627\u0626\u064A\u0629')]);
   var pctDiv = h('div', { class: 'summary-pct' }, pct + '%');
-  var label = h('div', { class: 'summary-label' }, matched + ' من ' + total + ' إجابات متطابقة');
+  var label = h('div', { class: 'summary-label' }, matched + ' \u0645\u0646 ' + total + ' \u0625\u062C\u0627\u0628\u0627\u062A \u0645\u062A\u0637\u0627\u0628\u0642\u0629');
   var msgDiv = h('div', { class: 'summary-msg' }, msg);
   var statBoxes = h('div', { class: 'stat-boxes' }, [
-    h('div', { class: 'stat-box green' }, [h('div', { class: 'stat-val' }, matched), h('div', { class: 'stat-lbl' }, 'توافق')]),
-    h('div', { class: 'stat-box red' }, [h('div', { class: 'stat-val' }, differed), h('div', { class: 'stat-lbl' }, 'اختلاف')]),
-    h('div', { class: 'stat-box blue' }, [h('div', { class: 'stat-val' }, total), h('div', { class: 'stat-lbl' }, 'إجمالي')])
+    h('div', { class: 'stat-box green' }, [h('div', { class: 'stat-val' }, matched), h('div', { class: 'stat-lbl' }, '\u062A\u0648\u0627\u0641\u0642')]),
+    h('div', { class: 'stat-box red' }, [h('div', { class: 'stat-val' }, differed), h('div', { class: 'stat-lbl' }, '\u0627\u062E\u062A\u0644\u0627\u0641')]),
+    h('div', { class: 'stat-box blue' }, [h('div', { class: 'stat-val' }, total), h('div', { class: 'stat-lbl' }, '\u0625\u062C\u0645\u0627\u0644\u064A')])
   ]);
   var newGameBtn = h('button', {
     class: 'btn btn-primary',
@@ -748,14 +845,17 @@ function renderSummary() {
       state.score = { match: 0, total: 0 };
       state.chatMsgs = [];
       state.currentQ = null;
+      state.currentQRaw = null;
       state.myAnswer = -1;
       state.partnerAnswer = -1;
       state.iSubmitted = false;
       state.partnerSubmitted = false;
+      state.iAmQuestionSender = false;
+      state.waitingForAck = false;
       state.gamePhase = 'lobby';
       renderLobby();
     }
-  }, 'لعبة جديدة 🔄');
+  }, '\u0644\u0639\u0628\u0629 \u062C\u062F\u064A\u062F\u0629 \uD83D\uDD04');
   var summaryCard = h('div', { class: 'summary-card' }, [pctDiv, label, msgDiv, statBoxes, newGameBtn]);
   var body = h('div', { class: 'game-body', style: 'display:flex;align-items:center;justify-content:center' }, [summaryCard]);
   var footer = h('div', { class: 'game-footer' });
@@ -768,6 +868,7 @@ renderLogin();
 window.addEventListener('beforeunload', function() {
   if (state.sseConnection) { try { state.sseConnection.close(); } catch(e) {} }
 });
+
 </script>
 </body>
 </html>
