@@ -366,52 +366,10 @@ function renderConnecting() {
   app.appendChild(screen);
   setTimeout(function() {
     if (state.gamePhase === 'connecting') {
-      if (state.myUsername === 'soukaina2002') {
-        state.gamePhase = 'welcome';
-        renderWelcome1();
-      } else {
-        state.gamePhase = 'lobby';
-        renderLobby();
-      }
+      state.gamePhase = 'lobby';
+      renderLobby();
     }
-  }, 2000);
-}
-
-/* ─── Welcome (soukaina only) ─── */
-function renderWelcome1() {
-  state.welcomeStep = 1;
-  state.gamePhase = 'welcome';
-  clearApp();
-  var app = document.getElementById('app');
-  var text = h('div', { class: 'welcome-text' }, '\u0623\u0647\u0644\u0627 \u0648\u0633\u0647\u0644\u0627 \u0633\u0643\u064A\u0646\u0629 \u2764\uFE0F \u0645\u0631\u062D\u0628\u0627 \u0628\u0643 \u0641\u064A \u0645\u0633\u0627\u062D\u062A\u0646\u0627 \u0627\u0644\u062E\u0627\u0635\u0629 \u0644\u062A\u0642\u0648\u064A\u0629 \u0627\u0644\u062A\u0639\u0627\u0631\u0641 \u0628\u064A\u0646\u0646\u0627');
-  var btn = h('button', { class: 'btn btn-primary', style: 'margin-top:32px', onClick: function() { renderWelcome2(); } }, '\u0646\u0639\u0645');
-  var screen = h('div', { class: 'screen', id: 'welcomeScreen' }, [text, btn]);
-  app.appendChild(screen);
-}
-
-function renderWelcome2() {
-  state.welcomeStep = 2;
-  clearApp();
-  var app = document.getElementById('app');
-  var flowers = ['\uD83C\uDF39','\uD83C\uDF37','\uD83C\uDF38','\uD83C\uDF3A','\uD83C\uDF3B','\uD83D\uDC90','\uD83C\uDFF7\uFE0F','\uD83C\uDFF7\uFE0F','\uD83C\uDF39'];
-  var gridItems = [];
-  for (var i = 0; i < flowers.length; i++) {
-    gridItems.push(h('div', { class: 'flower-item' }, flowers[i]));
-  }
-  var grid = h('div', { class: 'flower-grid' }, gridItems);
-  var title = h('div', { class: 'welcome-text', style: 'font-size:20px;margin-bottom:8px' }, '\uD83C\uDF38 \u0647\u0630\u0647 \u0627\u0644\u0648\u0631\u0648\u062F \u0647\u062F\u064A\u0629 \u0644\u0643 \uD83C\uDF38');
-  var btn = h('button', { class: 'btn btn-primary', style: 'margin-top:20px', onClick: function() { state.welcomeStep = 0; state.gamePhase = 'lobby'; renderLobby(); } }, '\u0634\u0643\u0631\u0627\u064B \uD83C\uDF38');
-  var screen = h('div', { class: 'screen', id: 'flowersScreen' }, [title, grid, btn]);
-  app.appendChild(screen);
-  var petals = ['\uD83C\uDF38','\uD83C\uDF3A','\uD83C\uDF37','\uD83D\uDC90','\u273F','\u2740'];
-  for (var p = 0; p < 12; p++) {
-    var petal = h('div', { class: 'floating-petal' }, petals[p % petals.length]);
-    petal.style.left = (Math.random() * 100) + '%';
-    petal.style.animationDuration = (4 + Math.random() * 6) + 's';
-    petal.style.animationDelay = (Math.random() * 5) + 's';
-    petal.style.fontSize = (16 + Math.random() * 14) + 'px';
-    screen.appendChild(petal);
-  }
+  }, 1500);
 }
 
 /* ─── Lobby ─── */
