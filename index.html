@@ -213,16 +213,18 @@ var state = {
 function connectSSE() {
   if (state.sseConnection) { try { state.sseConnection.close(); } catch(e) {} }
   var topic = getTopic();
-  var es = new EventSource('https://ntfy.sh/' + topic + '/sse');
+  var encodedTopic = encodeURIComponent(topic);
+  var es = new EventSource('https://ntfy.sh/' + encodedTopic + '/sse');
   state.sseConnection = es;
   es.onopen = function() {
     state.connected = true;
-    updateConnStatus();
+ updateConnStatus();
     sendMsg({ type: 'hello', from: state.myUsername, displayName: state.myDisplayName, gender: state.myGender });
   };
   es.onmessage = function(event) {
     try {
-      var data = JSON.parse(JSON.parse(event.data).message);
+      var ntfyRaw = JSON.parse(event.data);
+      var data = JSON.parse(ntfyRaw.message);
       if (data.from === state.myUsername) return;
       handleMessage(data);
     } catch(e) {}
@@ -230,7 +232,7 @@ function connectSSE() {
   es.onerror = function() {
     state.connected = false;
     updateConnStatus();
-    es.close();
+    try { es.close(); } catch(e) {}
     setTimeout(function() { if (state.myUsername) connectSSE(); }, 3000);
   };
 }
@@ -238,7 +240,8 @@ function connectSSE() {
 function sendMsg(obj) {
   obj.from = state.myUsername;
   obj.ts = Date.now();
-  fetch('https://ntfy.sh/' + getTopic(), {
+  var topic = getTopic();
+  fetch('https://ntfy.sh/' + encodeURIComponent(topic), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(obj)
